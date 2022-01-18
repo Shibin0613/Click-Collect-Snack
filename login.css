@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Montserrat';
+  }
+
+.container {
+    margin-left:35% ;
+    margin-right:35%;
+    margin-top:15%;
+}
+
+.geb-naam {
+    margin-left:17%;
+    margin-right: auto;
+    margin-top: 10%;
+    border:2px solid #fc0;
+    width: 40%;
+    height: 30px;
+    padding-left: 25px;
+    background-color: rgba(211, 211, 211, 0.5);
+    border-radius:10px;
+}
+
+
+
+.wachtw {
+    margin-left:17%;
+    margin-right: auto;
+    margin-top:10% ;
+    width: 40%;
+    border:2px solid #fc0;
+    height: 30px;
+    padding-left: 25px;
+    background-color: rgba(211, 211, 211, 0.5);
+    border-radius:10px;
+}
+
+.login {
+    width: 30%;
+    margin-left: 35%;
+    margin-top:7%;
+    margin-bottom: 5%;
+    background-color:#fc0;
+    border: solid 2px #fc0;
+    border-radius: 5px;
+    color: white;
+}
+
+.login:hover {
+    background-color: rgb(255, 187, 0);
+    color: white;
+    border: solid 2px rgb(255, 187, 0);;
+    transition: all 200ms;
+}
+
+  .user {
+    position: relative;
+    margin-left: 15%;
+  }
+.user i {
+    position: absolute;
+    margin-top: 12.5%;
+    margin-left: 19%;
+    color: #fc0;
+}
+
+.ww {
+    position: relative;
+    margin-left: 15%;
+  }
+.ww i {
+    position: absolute;
+    margin-top: 12.5%;
+    margin-left: 19%;
+    color: #fc0;
+}
+
+.a {
+    color: rgb(3, 3, 211);
+}
+
+
+
+
+
+  
+  
+
