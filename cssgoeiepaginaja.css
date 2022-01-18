@@ -1,0 +1,33 @@
+.click {
+    width: 40%;
+    border: solid;
+    background-size: 10px;
+    border-color: green;
+    background-color: brown;
+    height: 300px;
+    font-size: 150px;
+    margin-top: 20%;
+}
+
+.click:hover {
+    background-color: chartreuse;
+    color: crimson;
+}
+
+.collect {
+    width: 40%;
+    border: solid;
+    background-size: 10px;
+    border-color: green;
+    background-color: brown;
+    height: 300px;
+    font-size: 150px;
+    margin-top: 20%;
+}
+
+.collect:hover {
+    background-color: chartreuse;
+    color: crimson;
+    
+}
+
