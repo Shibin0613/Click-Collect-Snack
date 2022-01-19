@@ -26,7 +26,7 @@
     <button class="login"type="submit" name="submit">Login</button><br>
 </form>
 <center>
-<p>als je geen account hebt klik <a class="a" href="#">hier</a><p>
+<p>als je geen account hebt klik <a class="a" href="registratie.php">hier</a><p>
 </center><br>
 </fieldset>
 
