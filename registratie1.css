@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-    background-color: rgba(111, 157, 199, 0.8);
+    background-color: rgba(49, 67, 84, 0.8);
     border: solid;
     padding: 5px;
     border-radius: 5px;
@@ -36,7 +36,7 @@ body {
     justify-content: center;
 }
 
-.apparaatnaam {
+.registratie {
     margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
@@ -52,7 +52,7 @@ body {
 
 .voeg-toe {
     border-color: black;
-    background-color: rgba(111, 157, 199, 0.8);
+    background-color: rgba(95, 131, 165, 0.8);
     padding: 2%;
     width: 30%;
     margin-top: 2%;
@@ -66,7 +66,7 @@ body {
 }
 
 .voeg-toe:hover {
-    background-color:rgb(0, 48, 63);
+    background-color:rgba(139, 178, 214, 0.8);
     color: white;
     border-color: #00AFD6;
 }
