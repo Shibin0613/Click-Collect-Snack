@@ -25,7 +25,7 @@
     <button class="login" value="Submit" type="submit" name="but_submit" id="but_submit" name="but_submit">Login</button><br>
 </form>
 <center>
-<p>als je geen account hebt klik <a class="a" href="#">hier</a><p>
+<p>als je geen account hebt klik <a class="a" href="registratie.php">hier</a><p>
 </center><br>
 </fieldset>
 
@@ -37,7 +37,7 @@
 
 <?php
 
-include "config.php";
+include "conn.php";
 
 
 if(isset($_POST['but_submit'])){
@@ -58,7 +58,7 @@ if(isset($_POST['but_submit'])){
             $_SESSION['uname'] = $uname;
             header('Location: uitloggen.php');
         }else{
-            echo "Invalid username and password";
+            echo "Gebruikersnaam en Wachtwoord komen niet overeen";
         }
 
     }
