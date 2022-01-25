@@ -1,8 +1,8 @@
 <?php
-include "config.php";
+include "conn.php";
 
 // Check user login or not
-if(!isset($_SESSION['uname'])){
+if(!isset($_SESSION['email'])){
     header('Location: login.php');
 }
 
