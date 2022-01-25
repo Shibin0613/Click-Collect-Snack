@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+   
+}
+
+body {
+    font-family: 'Montserrat';
+    background-color: rgba(211, 211, 211, 0.5);
+}
+
+.container {
+    background-color: #fcfbf7;
+    border-color: rgb(167, 167, 167);
+    border: solid;
+    padding: 5px;
+    border-radius: 5px;
+    min-width: 200px;
+    width: 23%;
+    align-content: center;
+    vertical-align: middle;
+    margin-left: 37%;
+    margin-right: auto;
+    box-shadow: 0px 3px 3px 0px rgb(13, 44, 110);
+    margin-top: 17%;
+    position: absolute;
+    border-width: 2px;
+}
+
+
+.top-tekst {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.registratie {
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border-radius: 5px;
+    border-color: #fc0;
+    background-color: #D3D3D3;
+    padding: 2%;
+    text-align: center;
+    display: flex;
+    border-width: 1px;
+}
+
+.voeg-toe {
+    border-color: #fc0;
+    background-color: #fc0;
+    padding: 2%;
+    width: 30%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 3px;
+    display: flex;
+    margin-left:auto;
+    margin-right:auto;  
+    border-width: 1px;
+    text-align:center;
+    color:white;
+}
+
+.voeg-toe:hover {
+    background-color: rgb(255, 187, 0);
+    color: white;
+    border: solid 1px rgb(255, 187, 0);;
+    transition: all 200ms;
+}
