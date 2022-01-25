@@ -15,17 +15,17 @@
     <form method="POST" action="#">
     <div class="user">
     <i class="fas fa-user"></i>
-    <input class="geb-naam" type="txt" id="txt_uname" name="txt_uname"placeholder="Gebruikersnaam">
+    <input class="geb-naam" type="txt" name="voornaam"placeholder="Gebruikersnaam">
     <br>
    </div>
    <div class="ww">
    <i class="fas fa-key"></i>
-    <input class="wachtw" type="password" id="txt_uname"  name="txt_pwd" placeholder="Wachtwoord"><br>
+    <input class="wachtw" type="password" name="wachtwoord" placeholder="Wachtwoord"><br>
 </div>
-    <button class="login" value="Submit" type="submit" name="but_submit" id="but_submit" name="but_submit">Login</button><br>
+    <button class="login" name="but_submit">Login</button><br>
 </form>
 <center>
-<p>als je geen account hebt klik <a class="a" href="registratie.php">hier</a><p>
+<p>als je geen account hebt <a class="a" href="registratie.php">klik hier</a><p>
 </center><br>
 </fieldset>
 
@@ -42,20 +42,20 @@ include "conn.php";
 
 if(isset($_POST['but_submit'])){
 
-    $uname = mysqli_real_escape_string($con,$_POST['txt_uname']);
-    $password = mysqli_real_escape_string($con,$_POST['txt_pwd']);
+    $voornaam = mysqli_real_escape_string($conn,$_POST['voornaam']);
+    $wachtwoord = mysqli_real_escape_string($conn,$_POST['wachtwoord']);
 
 
-    if ($uname != "" && $password != ""){
+    if ($voornaam != "" && $wachtwoord != ""){
 
-        $sql_query = "select count(*) as cntUser from users where username='".$uname."' and password='".$password."'";
-        $result = mysqli_query($con,$sql_query);
+        $sql_query = "select count(*) as cntUser from users where username='".$voornaam."' and wachtwoord='".$wachtwoord."'";
+        $result = mysqli_query($conn,$sql_query);
         $row = mysqli_fetch_array($result);
 
         $count = $row['cntUser'];
 
         if($count > 0){
-            $_SESSION['uname'] = $uname;
+            $_SESSION['voornaam'] = $voornaam;
             header('Location: uitloggen.php');
         }else{
             echo "Gebruikersnaam en Wachtwoord komen niet overeen";
