@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Montserrat';
+}
+
+.container {
+    margin-left:2% ;
+    margin-right:40%;
+    margin-top:5%;
+
+    height: 50%;
+}
+
+.product {
+    display: flex;
+    background-color: rgb(154, 154, 154);
+    height: 10%;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 5%;
+}
+
+.product img {
+    display: inline-block;
+
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.producttitlecart {
+    font-size: 200%;
+    margin: 2%;
+    margin-left: 3%;
+}
+
+.winkelwagenmain {
+    margin-top: 2%;
+    margin-left: 2%;
+    background-color: rgb(185, 185, 185);
+    height: 60%;
+    width: 50%;
+}
