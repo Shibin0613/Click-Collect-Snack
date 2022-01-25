@@ -15,12 +15,12 @@
     <form method="POST" action="#">
         <div class="user">
             <i class="fas fa-user"></i>
-            <input class="geb-naam" type="email" name="email" placeholder="Emailadres" >
+            <input class="geb-naam" type="email" name="email" placeholder="Emailadres" maxlength="30" required>
             <br>
         </div>
         <div class="ww">
             <i class="fas fa-key"></i>
-            <input class="wachtw" type="password" name="wachtwoord" placeholder="Wachtwoord"><br>
+            <input class="wachtw" type="password" name="wachtwoord" placeholder="Wachtwoord" maxlength="20" required><br>
         </div>
         <button class="login" name="but_submit">Login</button><br>
     </form>
@@ -38,24 +38,27 @@
 <?php
 
 include "conn.php";
+error_reporting(0);
+if (isset($_SESSION['voornaam'])){
+    header("Location: uitloggen.php");
+}
 
 if(isset($_POST['but_submit'])){
 
     $email = $_POST['email'];
     $wachtwoord = $_POST['wachtwoord'];
-    $sql_query = mysqli_query($conn,"SELECT wachtwoord from users where email='$email'");
-
-    if ($row = mysqli_fetch_array($sql_query)){
-
-
-        if($wachtwoord==$row['wachtwoord']){
-            $_SESSION['email'] = $email;
-            header('Location: uitloggen.php');
+    $sql = "SELECT * FROM users WHERE email='$email' AND wachtwoord='$wachtwoord'";
+    $result = mysqli_query($conn, $sql);
+    if ($result->num_rows > 0){
+        $rows= mysqli_fetch_assoc($result);
+        $_SESSION['userid'] = $rows['userid'];
+        $_SESSION['email'] = $email;
+        $_SESSION['voornaam'] = $rows['voornaam'];
+        $_SESSION['achternaam'] = $rows['achternaam'];
+        $_SESSION['telef'] = $rows['telef'];
+        header('Location: uitloggen.php');
         }else{
             echo "Gebruikersnaam en Wachtwoord komen niet overeen";
         }
-
-    }
-
 }
 ?>
