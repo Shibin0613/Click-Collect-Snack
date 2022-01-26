@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Montserrat';
+    background-color: rgb(219, 219, 219);
+}
+
+.container {
+    margin-left: 2%;
+    margin-right: 40%;
+    margin-top: 5%;
+
+    height: 50%;
+}
+
+.product {
+    display: flex;
+    background-color: rgb(214, 214, 214);
+    height: 10%;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 5%;
+
+    box-shadow: 2px 3px #c0c0c0;
+}
+
+.product img {
+    display: inline-block;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.producttitlecart {
+    font-size: 150%;
+    margin: 2%;
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+.productamountcart {
+    padding-top: 1.5%;
+    font-size: 120%;
+    margin: 2%;
+}
+
+.winkelwagenmain {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    background-color: rgb(234, 233, 233);
+    height: 60%;
+    width: 50%;
+    
+    padding: 10px;
+    box-shadow: 2px 3px #c0c0c0;
+}
+
+.productpluscart {
+    border: none;
+    width: 3%;
+    background-color: rgb(195, 195, 195);
+}
+.productpluscart:hover {
+    background-color: rgb(178, 178, 178);
+}
+.productpluscart:active {
+    transform: translateX(1px);
+}
+
+.productminuscart {
+    border: none;
+    background-color: rgb(195, 195, 195);
+    width: 3%;
+    margin-left: 30%;
+}
+.productminuscart:hover {
+    background-color: rgb(178, 178, 178);
+}
+.productminuscart:active {
+    transform: translateX(-1px);
+}
+
+.pricecart {
+    font-size: 150%;
+    margin: 2%;
+    margin-left: 6%;
+    margin-top: 3%;
+    text-align: center;
+}
+
+.titlediv {
+    display: flex;
+    height: 5%;
+    width: 40%;
+    margin-left: 2%;
+    margin-top: 1%;
+    padding: 10px;
+    box-shadow: 2px 3px #c0c0c0;
+    background-color: rgb(234, 233, 233);
+}
+
+.titletext {
+    font-size: 300%;
+    text-align: center;
+    color: rgb(37, 37, 37);
+}
+
+.titleamount {
+    margin-left: 20%;
+    margin-top: 4%;
+}
