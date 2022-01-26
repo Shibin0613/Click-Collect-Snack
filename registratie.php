@@ -4,28 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="registratie1.css">
-    <title></title>
+    <link rel="stylesheet" href="registratie.css">
+    <title>Registreren</title>
 </head>
 <body>
 <div class="container">
 <h2 class="top-tekst">Account aanmaken</h2>
-      <form action="mail.php" method="POST" class="column, ">
-        <input name="id" value="<?php echo "$id" ?>" hidden>
-        <input name="productnaam" value="<?php echo "$productnaam" ?>" hidden>
-        <input name="beschikbaarheid" value="Uitgeleend" hidden>
-        <input name="beschrijving" value="<?php echo "$beschrijving" ?>" hidden>
+      <form action="" method="POST" class="column, ">
         <br>
-        <input class="apparaatnaam" type="text" name="voornaam" placeholder="Voornaam" minlength="2" maxlength="20" required>
+        <input class="registratie" type="text" name="voornaam" placeholder="Voornaam" minlength="3" maxlength="10" required>
         <br>
-        <input class="apparaatnaam" type="text" name="Achternaam" placeholder="Achternaam" minlength="2" maxlength="20" required>
+        <input class="registratie" type="text" name="achternaam" placeholder="Achternaam" minlength="3" maxlength="10" required>
         <br>
-        <input class="apparaatnaam" type="text" name="email" placeholder="Uw emailadres" minlength="4" maxlength="8"required>
+        <input class="registratie" type="email" name="email" placeholder="Uw emailadres" minlength="6" maxlength="30"required>
         <br>
-        <input class="apparaatnaam" type="password" name="wachtwoord" placeholder="Wachtwoord" required>
+        <input class="registratie" type="telef" name="telef" placeholder="Uw telefoonnummer" minlength="6" maxlength="12"required>
         <br>
-        <button class="voeg-toe" type="submit" name="submit">Registreren</button>
+        <input class="registratie" type="password" name="wachtwoord" placeholder="Wachtwoord" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" title="Minimaal 8 karakters, met een hoofdletter, kleinletter en een getal"required>
+        <br>
+        <button class="voeg-toe" type="submit" name="registreren">Registreren</button>
       </form>
 </div>
 </body>
+
+
 </html>
+
+<?php
+include "conn.php";
+
+if(isset($_POST['registreren'])) {
+  $voornaam=$_POST['voornaam'];
+  $achternaam=$_POST['achternaam'];
+  $telef=$_POST['telef'];
+  $email=$_POST['email'];
+  $wachtwoord=$_POST['wachtwoord'];
+  
+  //prepare en bind
+  $SELECT = "SELECT email from users Where email = ? Limit 1";
+  $insertSQL = "INSERT INTO users(`voornaam`, `achternaam`,`telef`,`email`,`wachtwoord`) values(?,?,?,?,?)";
+  
+  $stmt = $conn->prepare($SELECT);
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $stmt->bind_result($email);
+  $stmt->store_result();
+  $rnum = $stmt->num_rows;
+  
+  
+  if($rnum==0){
+    $stmt->close();
+    
+    $stmt = $conn->prepare($insertSQL);
+    $stmt->bind_param("sssss",$voornaam,$achternaam, $telef,$email,$wachtwoord);
+    $stmt->execute();
+    echo "<script>alert('Gefeliciteerd, uw account is aangemaakt, u mag door met bestellen')</script>";
+    ?>
+    <META HTTP-EQUIV="Refresh" CONTENT="0; URL=login.php">
+    <?php
+  }else{
+    echo "<script>alert('Er bestaat al $email om in te loggen, Probeer een andere email')</script>";
+  }
+  $stmt->close();
+  $conn->close();
+}
+?>
