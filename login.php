@@ -56,7 +56,7 @@ if(isset($_POST['but_submit'])){
         $_SESSION['voornaam'] = $rows['voornaam'];
         $_SESSION['achternaam'] = $rows['achternaam'];
         $_SESSION['telef'] = $rows['telef'];
-        header('Location: uitloggen.php');
+        header('Location: bestelpagina.php');
         }else{
             echo "Gebruikersnaam en Wachtwoord komen niet overeen";
         }
