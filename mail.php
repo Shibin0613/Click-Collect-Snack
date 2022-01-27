@@ -15,7 +15,7 @@ if(isset($_POST['bestel'])){
     if(mail($receiver, $subject, $body)){
         echo "<script>alert('Het is gelukt om een bestelling te plaatsen!')</script>";
         ?>
-        <META HTTP-EQUIV="Refresh" CONTENT="0; URL=uitloggen.php">
+        <META HTTP-EQUIV="Refresh" CONTENT="0; URL=bestelpagina.php">
         <?php
     }else{
         echo "<script>alert('Sorry, bestellling is niet gelukt')</script>";
