@@ -1,13 +1,12 @@
 <?php
-include "conn.php";
-
-// checken of de klant ingelogd heeft
-if(!isset($_SESSION['email'])){
+session_start();
+// checken als de klant niet heeft ingelogd
+if(!isset($_SESSION['userid'])){
     header('Location: login.php');
 }
 
 // logout
-if(isset($_POST['but_logout'])){
+if(isset($_POST['loguit'])){
     session_destroy();
     header('Location: login.php');
 }
@@ -18,24 +17,49 @@ if(isset($_POST['but_logout'])){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="registratie.css">
         <title>Bestellen</title>
     </head>
     <body>
         <h1>Bestelpagina</h1>
+
+        <form action="" method="" enctyoe="multipart/form-data">
+        <table border="1" cellpadding="4">
+            <tr>
+                <th>Productnaam</th>
+                <th>Image</th>
+            <tr>
+            <?php 
+            include "conn.php";
+            $sql="SELECT * FROM product";
+            $sql_run = mysqli_query($conn, $sql);
+
+            while($row = mysqli_fetch_array($sql_run)){
+                ?>
+                <tr>
+                    <td> <?php echo $row['productnaam'] ?></td>
+                    <td> <?php echo '<img src="data:image;base64,'.base64_encode($row['foto']).'" alt="Image">'; ?> </td>
+                </tr>    
+                <?php 
+            }
+            ?>
+        </table>
+        </form>
+        
         <form method='POST' action="mail.php">
-            <input name="userid" value="<?php echo $_SESSION['userid']; ?>" >
-            <input name="email" value="<?php echo $_SESSION['email']; ?>" >
-            <input name="voornaam" value="<?php echo $_SESSION['voornaam']; ?>" >
-            <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" >
-            <input name="telef" value="<?php echo $_SESSION['telef']; ?>" >
+            <input name="userid" value="<?php echo $_SESSION['userid']; ?>" hidden>
+            <input name="email" value="<?php echo $_SESSION['email']; ?>" hidden>
+            <input name="voornaam" value="<?php echo $_SESSION['voornaam']; ?>" hidden>
+            <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" hidden>
+            <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
             <input name="ophaaltijd" type='time' name="ophaaltijd" value='now'/>
             <button name="bestel">Bestel</button>   
         </form>
-    <form method='POST' action="" >
-        <input type="submit" value="Logout" name="but_logout">
-    </form>
+        <form method='POST' action="" >
+            <input type="submit" value="Logout" name="loguit">
+        </form>
+    
     </body>
+
 <script>
 $(function(){     
   var d = new Date(),        
