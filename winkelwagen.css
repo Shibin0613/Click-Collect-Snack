@@ -10,12 +10,8 @@ body {
     background-color: rgb(219, 219, 219);
 }
 
-.container {
-    margin-left: 2%;
-    margin-right: 40%;
-    margin-top: 5%;
-
-    height: 50%;
+.flex {
+    display: flex;
 }
 
 .product {
@@ -57,7 +53,20 @@ body {
     background-color: rgb(234, 233, 233);
     height: 60%;
     width: 50%;
-    
+
+    padding: 10px;
+    box-shadow: 2px 3px #c0c0c0;
+}
+
+.summary {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    background-color: rgb(234, 233, 233);
+    height: 60%;
+    width: 40%;
+    font-size: 120%;
+
     padding: 10px;
     box-shadow: 2px 3px #c0c0c0;
 }
@@ -67,12 +76,36 @@ body {
     width: 3%;
     background-color: rgb(195, 195, 195);
 }
+
 .productpluscart:hover {
     background-color: rgb(178, 178, 178);
 }
+
 .productpluscart:active {
     transform: translateX(1px);
 }
+
+.orderbtn {
+    border: none;
+    width: 50%;
+    height: 25%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 25%;
+    padding: 2%;
+    font-size: 100%;
+    background-color: rgb(195, 195, 195);
+    
+    box-shadow: 2px 3px rgb(185, 185, 185);
+}
+.orderbtn:hover {
+    background-color: rgb(178, 178, 178);
+}
+.orderbtn:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
 
 .productminuscart {
     border: none;
@@ -80,9 +113,11 @@ body {
     width: 3%;
     margin-left: 30%;
 }
+
 .productminuscart:hover {
     background-color: rgb(178, 178, 178);
 }
+
 .productminuscart:active {
     transform: translateX(-1px);
 }
@@ -98,6 +133,17 @@ body {
 .titlediv {
     display: flex;
     height: 5%;
+    width: 50%;
+    margin-left: 2%;
+    margin-top: 1%;
+    padding: 10px;
+    box-shadow: 2px 3px #c0c0c0;
+    background-color: rgb(234, 233, 233);
+}
+
+.titledivsummary {
+    display: flex;
+    height: 5%;
     width: 40%;
     margin-left: 2%;
     margin-top: 1%;
@@ -110,9 +156,19 @@ body {
     font-size: 300%;
     text-align: center;
     color: rgb(37, 37, 37);
+    font-weight: 500;
 }
 
 .titleamount {
-    margin-left: 20%;
+    margin-left: 35%;
     margin-top: 4%;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+    margin-left: 20%;
 }
