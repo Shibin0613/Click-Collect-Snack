@@ -75,7 +75,7 @@ label {
     border: solid;
     border-width: 1px;
     margin-bottom: 2%;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .label:hover{
@@ -88,6 +88,8 @@ label {
     border-width: 1px;
     position: absolute;
     top: 30%;
+    left: 31%;
+    
 }
 
 .foto{
