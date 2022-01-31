@@ -12,7 +12,7 @@
 <body>
 <fieldset class="container">
     <legend style='margin-left:45%;'>Login</legend>
-    <form method="POST" action="#">
+    <form method="POST" action="">
         <div class="user">
             <i class="fas fa-user"></i>
             <input class="geb-naam" type="email" name="email" placeholder="Emailadres" maxlength="30" required>
@@ -22,7 +22,7 @@
             <i class="fas fa-key"></i>
             <input class="wachtw" type="password" name="wachtwoord" placeholder="Wachtwoord" maxlength="20" required><br>
         </div>
-        <button class="login" name="but_submit">Login</button><br>
+        <button class="login" name="login">Login</button><br>
     </form>
 <center>
 <p>als je geen account hebt <a class="a" href="registratie.php">klik hier</a><p>
@@ -38,12 +38,14 @@
 <?php
 
 include "conn.php";
+session_start();
 error_reporting(0);
-if (isset($_SESSION['voornaam'])){
-    header("Location: uitloggen.php");
+
+if(isset($_SESSION['userid'])){
+    header('Location: bestelpagina.php');
 }
 
-if(isset($_POST['but_submit'])){
+if(isset($_POST['login'])){
 
     $email = $_POST['email'];
     $wachtwoord = $_POST['wachtwoord'];
@@ -52,13 +54,12 @@ if(isset($_POST['but_submit'])){
     if ($result->num_rows > 0){
         $rows= mysqli_fetch_assoc($result);
         $_SESSION['userid'] = $rows['userid'];
-        $_SESSION['email'] = $email;
         $_SESSION['voornaam'] = $rows['voornaam'];
         $_SESSION['achternaam'] = $rows['achternaam'];
         $_SESSION['telef'] = $rows['telef'];
-        header('Location: bestelpagina.php');
-        }else{
-            echo "Gebruikersnaam en Wachtwoord komen niet overeen";
-        }
+        header("Location: bestelpagina.php");
+    }else{
+        echo "De combinatie van Email en Wachtwoord komen niet overeen";
+    }
 }
 ?>
