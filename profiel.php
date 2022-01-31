@@ -32,3 +32,22 @@
 </center>
 </body>
 </html>
+
+<?php
+include "conn.php";
+if(isset($_POST['submit'])){
+   $naam= $_POST['naam'];
+   $bedrag = $_POST['bedrag'];
+    $sql="INSERT INTO `producten`(`naam`, `bedrag`) values(?,?)";
+    $stmt= $conn->prepare($sql);
+    $stmt->bind_param("ss", $naam, $bedrag);
+    $stmt->execute();
+}
+?>
+
+<!-- zorgt dat het niet opnieuw toegevoegd wordt aan de database als je refreshed -->
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
