@@ -30,6 +30,9 @@
         </div>
     </div>
 </center>
+
+
+
 </body>
 </html>
 
@@ -40,6 +43,7 @@ if(isset($_POST['submit'])){
    $bedrag = $_POST['bedrag'];
     $sql="INSERT INTO `producten`(`naam`, `bedrag`) values(?,?)";
     $stmt= $conn->prepare($sql);
+<<<<<<< Updated upstream
     $stmt->bind_param("ss", $naam, $bedrag);
     $stmt->execute();
 }
@@ -51,3 +55,9 @@ if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
 </script>
+=======
+    $stmt=bind_param("ss", $naam, $bedrag);
+    $stmt->execute();
+}
+?>
+>>>>>>> Stashed changes
