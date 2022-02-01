@@ -9,6 +9,6 @@ $dbname = "clickcollectsnack"; /* Database name */
 
 $conn = mysqli_connect($host, $user, $password,$dbname);
 // Check connection
-if (!$con) {
+if (!$conn) {
  die("Connection failed: " . mysqli_connect_error());
 }
