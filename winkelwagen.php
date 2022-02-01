@@ -29,27 +29,55 @@
     <div class="flex">
         <div class="winkelwagenmain">
 
-            <br>
-            <div class="product">
-                <img width="60" height="50"
-                    src="http://www.snackweetjes.nl/wp-content/uploads/2016/03/frituur-snacks.png" alt="productfoto">
-                <p class="producttitlecart">Frikandel</p>
-                <button class="productminuscart">-</button>
-                <p class="productamountcart">x1</p>
-                <button class="productpluscart">+</button>
-                <p class="pricecart">€1,50</p>
-            </div>
-            <br>
-            <div class="product">
-                <img width="60" height="50"
-                    src="http://www.snackweetjes.nl/wp-content/uploads/2016/03/frituur-snacks.png" alt="productfoto">
-                <p class="producttitlecart">Frikandel</p>
-                <button class="productminuscart">-</button>
-                <p class="productamountcart">x1</p>
-                <button class="productpluscart">+</button>
-                <p class="pricecart">€1,50</p>
-            </div>
-            <br>
+
+            <?php
+                $Products = [
+                    0 => [
+                        "Name" => "Frikandel",
+                        "Amount" => 1,
+                        "PricePerUnitEur" => 1.50,
+                        "Image" => "http://www.snackweetjes.nl/wp-content/uploads/2016/03/frituur-snacks.png"
+                    ],
+
+                    1 => [
+                        "Name" => "Kroket",
+                        "Amount" => 2,
+                        "PricePerUnitEur" => 2,
+                        "Image" => "http://www.snackweetjes.nl/wp-content/uploads/2016/03/frituur-snacks.png"
+                    ],
+
+                    2 => [
+                        "Name" => "Kromartijnket",
+                        "Amount" => 2,
+                        "PricePerUnitEur" => 25,
+                        "Image" => "http://www.snackweetjes.nl/wp-content/uploads/2016/03/frituur-snacks.png"
+                    ],
+                ];
+
+                foreach ($Products as $Key => $Value) {
+                    //$V = $Value["Name"];
+                    //echo "{$Key} => {$V} ";
+
+                    $Name = $Value["Name"];
+                    $Amount = $Value["Amount"];
+                    $PPU = $Value["PricePerUnitEur"];
+                    $Img = $Value["Image"];
+
+                    $TotalProductPrice = $Amount * $PPU;
+
+                    echo "
+                    <br>
+                    <div class='product'>
+                        <img width='60' height='50' src='$Img' alt='productfoto'>
+                        <p class='producttitlecart'>$Name</p>
+                        <button class='productminuscart'>-</button>
+                        <p class='productamountcart'>x$Amount</p>
+                        <button class='productpluscart'>+</button>
+                        <p class='pricecart'>€$TotalProductPrice</p>
+                    </div>";
+
+                }
+            ?>
         </div>
 
         <div class="summary">

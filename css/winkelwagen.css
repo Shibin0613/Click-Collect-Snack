@@ -83,7 +83,7 @@ body {
 
 .productpluscart:active {
     transform: translateX(1px);
-}
+}   
 
 .orderbtn {
     border: none;
