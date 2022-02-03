@@ -35,9 +35,6 @@ body {
 
 .producttitlecart {
     font-size: 150%;
-    margin: 2%;
-    margin-left: 3%;
-    margin-top: 3%;
 }
 
 .productamountcart {
@@ -65,7 +62,7 @@ body {
     background-color: rgb(234, 233, 233);
     height: 60%;
     width: 40%;
-    font-size: 120%;
+    font-size: 135%;
 
     padding: 10px;
     box-shadow: 2px 3px #c0c0c0;
@@ -73,7 +70,7 @@ body {
 
 .productpluscart {
     border: none;
-    width: 3%;
+    width: 15px;
     background-color: rgb(195, 195, 195);
 }
 
@@ -83,7 +80,7 @@ body {
 
 .productpluscart:active {
     transform: translateX(1px);
-}
+}   
 
 .orderbtn {
     border: none;
@@ -110,7 +107,7 @@ body {
 .productminuscart {
     border: none;
     background-color: rgb(195, 195, 195);
-    width: 3%;
+    width: 15px;
     margin-left: 30%;
 }
 
@@ -119,7 +116,7 @@ body {
 }
 
 .productminuscart:active {
-    transform: translateX(-1px);
+    transform: translateX(-1px);    
 }
 
 .pricecart {
@@ -139,6 +136,10 @@ body {
     padding: 10px;
     box-shadow: 2px 3px #c0c0c0;
     background-color: rgb(234, 233, 233);
+}
+.producttitlediv {
+    margin: 3% 2% 2% 3%;
+    width: 20%;
 }
 
 .titledivsummary {
@@ -165,10 +166,11 @@ body {
 }
 
 .alignleft {
+    margin-left: 5%;
     float: left;
+    width: 35%
 }
 
 .alignright {
-    float: right;
-    margin-left: 20%;
+    margin-left: 45%;
 }
