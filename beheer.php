@@ -10,7 +10,7 @@
 <body>
     
 
-
+<button class="knoppie" name="knup" type="submit"></button>
 
 
 
@@ -51,6 +51,7 @@ if($total!=0){
         <td>".$result['tijd']."</td>
         <td>".$result['status']."</td>
         <td>".$result['bestelling']."</td>
+        <td><button class='knoppie' type='submit'>'open'</button></td>
         </tr>
         ";
     }
@@ -71,7 +72,7 @@ if($total!=0){
 <?php
 include "conn.php";
 error_reporting(0);
-$query= "select * FROM bestelling";
+$query= "select * FROM products";
 $data = mysqli_query($conn,$query);
 $total = mysqli_num_rows($data);
 
@@ -82,9 +83,10 @@ if($total!=0){
         
         <li>". 'Hallo'.$result['bestel nummer']."</li>
         <li>".$result['naam']."</li>
-        <li>".$result['afhaaltijd']."</li>
+        <li>]".$result['afhaaltijd']."</li>
         <li>".$result['bestel nummer']."</li>
         </div>
+       
         <div class='doos3'>  
         <li>".$result['naam']."</li>
         <li>".$result['tijd']."</li>
