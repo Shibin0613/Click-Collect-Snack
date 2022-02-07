@@ -9,13 +9,11 @@
 
 body {
     font-family: 'Montserrat';
-    background-color: rgba(211, 211, 211, 0.5);
+    background-color: rgb(219, 219, 219);
 }
 
 .container {
-    background-color: #fcfbf7;
-    border-color: rgb(167, 167, 167);
-    border: solid;
+    background-color: rgb(234, 233, 233);
     padding: 5px;
     border-radius: 5px;
     min-width: 200px;
@@ -24,7 +22,7 @@ body {
     vertical-align: middle;
     margin-left: 37%;
     margin-right: auto;
-    box-shadow: 0px 3px 3px 0px rgb(13, 44, 110);
+    box-shadow: 2px 3px rgb(185, 185, 185);
     margin-top: 17%;
     position: absolute;
     border-width: 2px;
@@ -43,7 +41,7 @@ body {
     margin-right: auto;
     width: 80%;
     border-radius: 5px;
-    border-color: #fc0;
+    border-color:rgb(185, 185, 185);
     background-color: #D3D3D3;
     padding: 2%;
     text-align: center;
