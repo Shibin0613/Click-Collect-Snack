@@ -11,7 +11,52 @@ if(isset($_POST['loguit'])){
     header('Location: login.php');
 }
 ?>
-<!doctype html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bestelpagina1.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="Productpagina">
+        <div class="leftbar1"></div>
+        <div class="rightbar1"></div>
+            <?php
+            include "conn.php";
+            include "function.php";
+            Product($conn)
+             ?>
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -32,7 +77,7 @@ if(isset($_POST['loguit'])){
             <tr>
             <?php 
             include "conn.php";
-            $sql="SELECT * FROM product";
+            $sql="SELECT * FROM producten";
             $sql_run = mysqli_query($conn, $sql);
 
             while($row = mysqli_fetch_array($sql_run)){
@@ -78,4 +123,4 @@ $(function(){
 </script>
 
 </html>
-
+ -->
