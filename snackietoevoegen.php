@@ -36,33 +36,41 @@
 </body>
 </html>
 
+
+
+
+
+
+
 <?php
 include "conn.php";
 
-if(isset($_POST['submit'])){
-    $naam= $_POST['naam'];
-    $bedrag = $_POST['bedrag'];
-     $sql="INSERT INTO producten(naam, bedrag) values(?,?)";
-     $stmt= $conn->prepare($sql);
-     $stmt->bind_param("ss", $naam, $bedrag);
-     $stmt->execute();
- }
+// if(isset($_POST['submit'])){
+//    $naam= $_POST['naam'];
+//    $bedrag = $_POST['bedrag'];
+//     $sql="INSERT INTO producten(naam, bedrag) values(?,?)";
+//     $stmt= $conn->prepare($sql);
+//     $stmt->bind_param("ss", $naam, $bedrag);
+//     $stmt->execute();  
+// }
 
-// if(isset($_POST['submit'])) {
+//if(isset($_POST['submit'])) {
 //     $bedrag = $_POST['bedrag'];
 //     $naam= $_POST['naam'];
-//     $foto = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-    
+//     print_r( $_FILES );
+//     //echo $_FILES["image"]["tmp_name"];
+//     $foto = addslashes( file_get_contents($_FILES["image"]["tmp_name"]) );
+//    
 //     $query = "INSERT INTO product(`naam`,`bedrag`,`foto`) VALUES('$productnaam','$bedrag','$foto') ";
 //     $query_run= mysqli_query($conn, $query);
-    
+//    
 //     if($query_run){
 //         echo "<script>alert('Product is toegevoegd.')</script>";
 //     }else{
 //         echo "<script>alert('Het is niet gelukt')</script>";
 //     }
 // }
-?>
+//?>
 
 <!-- zorgt dat het niet opnieuw toegevoegd wordt aan de database als je refreshed -->
 <script>
