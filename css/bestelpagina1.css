@@ -1,0 +1,16 @@
+table {
+    width:30%;
+  }
+  table, th, td {
+    border: 3px solid;
+  }
+  .table th, .table td { 
+    text-align: center; 
+    padding: 0.25em;
+    font-size:16px;
+  }
+
+.foto{
+    width:20%;
+    height:20%;
+}

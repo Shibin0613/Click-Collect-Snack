@@ -16,17 +16,19 @@ if(isset($_POST['loguit'])){
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="css/bestelpagina1.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bestellen</title>
     </head>
     <body>
         <h1>Bestelpagina</h1>
 
-        <form action="" method="" enctyoe="multipart/form-data">
+        <form action="" method="GET" enctyoe="multipart/form-data">
         <table border="1" cellpadding="4">
             <tr>
                 <th>Productnaam</th>
                 <th>Image</th>
+                <th>Bedrag</th>
             <tr>
             <?php 
             include "conn.php";
@@ -37,7 +39,9 @@ if(isset($_POST['loguit'])){
                 ?>
                 <tr>
                     <td> <?php echo $row['productnaam'] ?></td>
-                    <td> <?php echo '<img src="data:image;base64,'.base64_encode($row['foto']).'" alt="Image">'; ?> </td>
+                    <td> <?php echo '<img src="data:image;base64,'.base64_encode($row['foto']).'" alt="Image" class="foto">'; ?> </td>
+                    <td> €<?php echo $row['bedrag'] ?></td>
+                    <td><input type="number" name="aantal" placeholder="aantal" min="1" max="24" required></td>
                 </tr>    
                 <?php 
             }
@@ -51,7 +55,7 @@ if(isset($_POST['loguit'])){
             <input name="voornaam" value="<?php echo $_SESSION['voornaam']; ?>" hidden>
             <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" hidden>
             <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
-            <input name="ophaaltijd" type='time' name="ophaaltijd" value='now'/>
+            <input name="ophaaltijd" type='time' value="now"/>
             <button name="bestel">Bestel</button>   
         </form>
         <form method='POST' action="" >
