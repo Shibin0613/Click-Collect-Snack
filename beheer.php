@@ -10,7 +10,7 @@
 <body>
     
 
-<button class="knoppie" name="knup" type="submit"></button>
+
 
 
 
@@ -51,7 +51,17 @@ if($total!=0){
         <td>".$result['tijd']."</td>
         <td>".$result['status']."</td>
         <td>".$result['bestelling']."</td>
-        <td><button class='knoppie' type='submit'>'open'</button></td>
+        <td>
+        <button onclick=myFunction()>Click me</button>
+           <script>
+        function myFunction() {
+          document.getElementById(demo).innerHTML = Hello World;
+        }
+        
+        
+     
+        </script>
+        </td>
         </tr>
         ";
     }
@@ -72,43 +82,38 @@ if($total!=0){
 <?php
 include "conn.php";
 error_reporting(0);
-$query= "select * FROM products";
+$query= "select * FROM products where id = 1";
 $data = mysqli_query($conn,$query);
-$total = mysqli_num_rows($data);
+
 
 if($total!=0){
     while($result=mysqli_fetch_assoc($data)){
         echo "
-   <div class='doos2'>    
-        
-        <li>". 'Hallo'.$result['bestel nummer']."</li>
-        <li>".$result['naam']."</li>
-        <li>]".$result['afhaaltijd']."</li>
-        <li>".$result['bestel nummer']."</li>
+  
+        <div class='doos2'>
+        <li> bestelnr ".$result['bestelnr']."</li>
+        <li> naam ".$result['naam']."</li>
+        <li> afhaaltijd ".$result['afhaaltijd']."</li>
         </div>
-       
-        <div class='doos3'>  
-        <li>".$result['naam']."</li>
-        <li>".$result['tijd']."</li>
 
-       </div>
-       <div class='doos4'>  
-        <li>".$result['status']."</li>
-        <li>".$result['bestelling']."</li>
-        
-        
-        
-        ";
+
+        <div class='doos3'>
+        <li> producten in winkelmand</li>
+        <li>".$result['naam']."</li>
+        <li>".$result['naam']."</li>
+        <li>".$result['naam']."</li>
+        </div>
+
+        <div class='doos4'>
+        <li><button onclick=myFunction()>klaar</button></li>
+        <div>
+         ";
 
     }
-}else{
-    echo "
-    <tr>
-    <th colspan='2'>Er is geen data gevonden!!!</th>
-    </tr>
-    ";
 }
-
+myFunction{
+    
+}
 
 ?>
 </div>
