@@ -111,10 +111,6 @@ if($total!=0){
 
     }
 }
-myFunction{
-    
-}
-
 ?>
 </div>
 

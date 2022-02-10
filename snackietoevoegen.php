@@ -25,12 +25,7 @@
                     Voeg foto toe
                 </label>
                 <button class="submit" type="submit" name="submit">Opslaan</button>
-
             </form>
-            <!-- moet nog gemaakt worden -->
-            <div class="foto-container">
-                <h3 class="foto">foto</h3>
-            </div>
         </div>
     </center>
 </body>
@@ -46,28 +41,26 @@
 <?php
 include "conn.php";
 
-if (isset($_POST['submit'])) {
-    $naam = $_POST['naam'];
-    $bedrag = $_POST['bedrag'];
-    $sql = "INSERT INTO producten(naam, bedrag) values(?,?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $naam, $bedrag);
-    $stmt->execute();
-}
+// if (isset($_POST['submit'])) {
+//     $naam = $_POST['naam'];
+//     $bedrag = $_POST['bedrag'];
+//     $sql = "INSERT INTO producten(naam, bedrag) values(?,?)";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->bind_param("ss", $naam, $bedrag);
+//     $stmt->execute();
+// }
 
-if (isset($_POST['submit'])) {
+if(isset($_POST['submit'])) {
     $bedrag = $_POST['bedrag'];
-    $naam = $_POST['naam'];
-    print_r($_FILES);
-    //echo $_FILES["image"]["tmp_name"];
+    $productnaam=$_POST['productnaam'];
     $foto = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-
-    $query = "INSERT INTO product(`naam`,`bedrag`,`foto`) VALUES('$productnaam','$bedrag','$foto') ";
-    $query_run = mysqli_query($conn, $query);
-
-    if ($query_run) {
+    
+    $query = "INSERT INTO product(`productnaam`,`foto`) VALUES('$productnaam','$foto') ";
+    $query_run= mysqli_query($conn, $query);
+    
+    if($query_run){
         echo "<script>alert('Product is toegevoegd.')</script>";
-    } else {
+    }else{
         echo "<script>alert('Het is niet gelukt')</script>";
     }
 }
