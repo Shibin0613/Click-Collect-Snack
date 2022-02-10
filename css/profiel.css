@@ -15,7 +15,7 @@ body {
     border-color: rgb(189, 189, 189);
     padding: 10px;
     margin-top: 10%;
-    width: 40%;
+    width: 35%;
     height: 300px;
     border-width: 1px;
     background-color: white;
@@ -31,7 +31,6 @@ body {
     height: 30px;
     width: 200px;
     padding-left: 5px;
-    margin-left: 40%;
 }
 
 .profiel{
@@ -47,7 +46,6 @@ body {
     border: solid 2px #ffcc00;
     border-radius: 5px;
     color: white;
-    margin-left: 40%;
 }
 
 .submit:hover{
@@ -66,7 +64,6 @@ label {
     width: 150px;
     background-color: #fc0;
     border-radius: 5px;
-    margin-left:40%;
     display: flex;
     justify-content: center;
     align-items: center;
