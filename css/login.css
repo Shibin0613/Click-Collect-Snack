@@ -55,7 +55,7 @@ body {
 .login:hover {
     background-color: rgb(255, 187, 0);
     color: white;
-    border: solid 2px rgb(255, 187, 0);;
+    border: solid 2px rgb(255, 187, 0);
     transition: all 200ms;
 }
 

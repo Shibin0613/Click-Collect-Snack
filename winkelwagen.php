@@ -43,7 +43,7 @@
 
                 1 => [
                     "Name" => "Kroket",
-                    "Amount" => 2,
+                    "Amount" => 3,
                     "PricePerUnitEur" => 2,
                     "Image" => "http://www.snackweetjes.nl/wp-content/uploads/2016/03/frituur-snacks.png"
                 ],
