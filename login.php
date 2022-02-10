@@ -51,20 +51,18 @@ if(isset($_POST['login'])){
     $wachtwoord = $_POST['wachtwoord'];
     $sql = "SELECT * FROM users WHERE email='$email' AND wachtwoord='$wachtwoord'";
     $result = mysqli_query($conn, $sql);
-    $rows= mysqli_fetch_array($result);
-    if ($result->num_rows > 0){
-        if($rows["usertype"] == "user"){
-            $_SESSION['userid'] = $rows['userid'];
-            $_SESSION['email'] = $email;
-            $_SESSION['voornaam'] = $rows['voornaam'];
-            $_SESSION['achternaam'] = $rows['achternaam'];
-            $_SESSION['telef'] = $rows['telef'];
-            header("Location: bestelpagina.php");
-        }elseif($rows["usertype"] == "admin"){
-            header("Location: beheer.php");  
+    $rows= mysqli_fetch_assoc($result);
+    if($rows["usertype"] == "user"){
+        $_SESSION['userid'] = $rows['userid'];
+        $_SESSION['email'] = $email;
+        $_SESSION['voornaam'] = $rows['voornaam'];
+        $_SESSION['achternaam'] = $rows['achternaam'];
+        $_SESSION['telef'] = $rows['telef'];
+        header("Location: bestelpagina.php");
+    }elseif($rows["usertype"] == "admin"){
+        header("Location: beheer.php");  
     }else{
         echo "De combinatie van Email en Wachtwoord komen niet overeen";
     }
-}
 }
 ?>
