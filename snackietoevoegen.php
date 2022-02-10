@@ -50,18 +50,24 @@ include "conn.php";
 //     $stmt->execute();
 // }
 
+
 if(isset($_POST['submit'])) {
-    $bedrag = $_POST['bedrag'];
     $productnaam=$_POST['productnaam'];
-    $foto = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+    $bedrag=$_POST['bedrag'];
     
-    $query = "INSERT INTO product(`productnaam`,`foto`) VALUES('$productnaam','$foto') ";
+    $image = $_FILES['image']['name'];
+    $target = "image/".basename($image);
+    
+    $query = "INSERT INTO product(`productnaam`,`bedrag`,`foto`) VALUES('$productnaam','$bedrag','$image') ";
     $query_run= mysqli_query($conn, $query);
+
+    if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
     
     if($query_run){
         echo "<script>alert('Product is toegevoegd.')</script>";
     }else{
         echo "<script>alert('Het is niet gelukt')</script>";
     }
+}
 }
 ?>
