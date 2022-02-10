@@ -1,3 +1,17 @@
+<?php
+session_start();
+// checken als de klant niet heeft ingelogd
+if(!isset($_SESSION['userid'])){
+    header('Location: login.php');
+}
+
+// logout
+if(isset($_POST['loguit'])){
+    session_destroy();
+    header('Location: login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +22,6 @@
     <title>beheer</title>
     </head>
 <body>
-    
-
-
-
-
-
-
-
-    </body>
-    </html>
-    
-
-
-
-
-
-
 
 <table class= "tabel">
 <tr>
@@ -75,8 +72,15 @@ if($total!=0){
 ?>
 </table>
 
+<a href="snackietoevoegen.php"><input type="submit" value="Snacktoeveogen"></a>
 
-<div class="doos">
+<form method='POST' action="" >
+        <input type="submit" value="Logout" name="loguit">
+</form>
+
+</body>
+</html>
+
     
 
 <?php
@@ -112,7 +116,6 @@ if($total!=0){
     }
 }
 ?>
-</div>
 
 
 
