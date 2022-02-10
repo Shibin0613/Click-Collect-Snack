@@ -38,7 +38,7 @@ body {
 }
 
 .productamountcart {
-    padding-top: 1.5%;
+    padding-top: 10%;
     font-size: 120%;
     margin: 2%;
 }
@@ -123,7 +123,7 @@ body {
     font-size: 150%;
     margin: 2%;
     margin-left: 6%;
-    margin-top: 3%;
+    padding-top: 10%;
     text-align: center;
 }
 
@@ -173,4 +173,15 @@ body {
 
 .alignright {
     margin-left: 45%;
+}
+
+.freeform {
+    display: inline-flex;
+    margin-left: 25%;
+    width: 25%;
+}
+
+.hidden {
+    position: absolute;
+    display: none;
 }
