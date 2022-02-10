@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css\login.css">
+    <link rel="stylesheet" href="css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Inloggen</title>
@@ -51,15 +51,20 @@ if(isset($_POST['login'])){
     $wachtwoord = $_POST['wachtwoord'];
     $sql = "SELECT * FROM users WHERE email='$email' AND wachtwoord='$wachtwoord'";
     $result = mysqli_query($conn, $sql);
+    $rows= mysqli_fetch_array($result);
     if ($result->num_rows > 0){
-        $rows= mysqli_fetch_assoc($result);
-        $_SESSION['userid'] = $rows['userid'];
-        $_SESSION['voornaam'] = $rows['voornaam'];
-        $_SESSION['achternaam'] = $rows['achternaam'];
-        $_SESSION['telef'] = $rows['telef'];
-        header("Location: bestelpagina.php");
+        if($rows["usertype"] == "user"){
+            $_SESSION['userid'] = $rows['userid'];
+            $_SESSION['email'] = $email;
+            $_SESSION['voornaam'] = $rows['voornaam'];
+            $_SESSION['achternaam'] = $rows['achternaam'];
+            $_SESSION['telef'] = $rows['telef'];
+            header("Location: bestelpagina.php");
+        }elseif($rows["usertype"] == "admin"){
+            header("Location: beheer.php");  
     }else{
         echo "De combinatie van Email en Wachtwoord komen niet overeen";
     }
+}
 }
 ?>
