@@ -49,12 +49,10 @@ if($total!=0){
         <td>".$result['status']."</td>
         <td>".$result['bestelling']."</td>
         <td>
-        <button onclick=myFunction()>Click me</button>
-           <script>
-        function myFunction() {
-          document.getElementById(demo).innerHTML = Hello World;
-        }
-        
+        <form  enctype='multipart/form-data' action='' method='POST'>
+        <button class='knop'type='knop' name='open'>open</button> 
+        </form>
+       
         
      
         </script>
@@ -69,6 +67,10 @@ if($total!=0){
     </tr>
     ";
 }
+
+   
+
+
 ?>
 </table>
 
@@ -84,14 +86,14 @@ if($total!=0){
     
 
 <?php
-include "conn.php";
-error_reporting(0);
-$query= "select * FROM products where id = 1";
-$data = mysqli_query($conn,$query);
+        include "conn.php";
+    error_reporting(0);
+    $query= "select * FROM products where id = 1";
+    $data = mysqli_query($conn,$query);
 
 
-if($total!=0){
-    while($result=mysqli_fetch_assoc($data)){
+    
+    
         echo "
   
         <div class='doos2'>
@@ -99,22 +101,49 @@ if($total!=0){
         <li> naam ".$result['naam']."</li>
         <li> afhaaltijd ".$result['afhaaltijd']."</li>
         </div>
-
-
+    
+        
+      
+           
         <div class='doos3'>
+          if (isset($_POST[open])){ 
+            echo'
+            
         <li> producten in winkelmand</li>
         <li>".$result['naam']."</li>
         <li>".$result['naam']."</li>
         <li>".$result['naam']."</li>
+        ';}
         </div>
+        
+        
 
+        <form  enctype='multipart/form-data' action='' method='POST'>
         <div class='doos4'>
-        <li><button onclick=myFunction()>klaar</button></li>
+        <li> <button class='knop'type='knop' name='knop'>klaar</button> </li>
         <div>
+        </form>
          ";
 
+<<<<<<< Updated upstream
     }
 }
+=======
+    
+    
+ 
+    if (isset($_POST['knop'])){
+
+    
+    $conn->query( "DELETE FROM bestelling WHERE status='klaar'"); 
+ 
+    }   
+
+    
+ 
+
+
+>>>>>>> Stashed changes
 ?>
 
 
