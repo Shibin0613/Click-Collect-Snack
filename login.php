@@ -63,7 +63,7 @@ if(isset($_POST['login'])){
         $_SESSION['userid'] = $rows['userid'];
         header("Location: beheer.php");  
     }else{
-        echo "De combinatie van Email en Wachtwoord komen niet overeen";
+        echo "<script>alertDe combinatie van Email en Wachtwoord komen niet overeen";
     }
 }
 ?>

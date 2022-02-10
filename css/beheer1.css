@@ -30,6 +30,10 @@ body {
     background-color: yellow;
   }
   td.edit-buttons { text-align: right; }
+
+  .tr:nth-child(even) {
+    background-color: #f3f3f3;
+  }
   
 
   .table1 {
