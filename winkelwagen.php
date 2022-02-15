@@ -62,6 +62,8 @@ if(isset($_POST['loguit'])){
                             <p class='pricecart'>€$TotalProductPrice</p>
                     </div>";
                 }
+            }else{
+                echo "Er zit niks in de winkelwagen, u kunt <a href='bestelpagina.php'><u>hier</u></a> kliken om terug te gaan om te bestellen";
             }
             ?>
         </div>
