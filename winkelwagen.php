@@ -39,29 +39,26 @@ if(isset($_POST['loguit'])){
         <div class="winkelwagenmain">
             
             <?php
-            if(isset($_SESSION['wagen'])){
-                foreach ($_SESSION['wagen'] as $key => $product) {
+            if(!empty($_SESSION['wagen'])){
+                $totalebedrag = 0;
+                foreach ($_SESSION['wagen'] as $key => $product):
                 //$V = $Value["Name"];
                 //echo "{$Key} => {$V} ";
+                ?>
+                <br>
+                <div class='product'>
+                    <div class='producttitlediv'>
+                        <p class='producttitlecart'><?php echo $product['productnaam']; ?></p>
+                    </div>
+                        <button class='productminuscart'>-</button>
+                        <p class='productamountcart'>x<?php echo $product['aantal']; ?></p>
+                        <button class='productpluscart'>+</button>
+                        <p class='pricecart'>€<?php echo $product['bedrag']; ?></p>
+                </div>
+                <?php
+                $totalebedrag = $totalebedrag + ($product['aantal'] * $product['bedrag']);
+            endforeach;
 
-                $productnaam = $product['productnaam'];
-                $aantal = $product['aantal'];
-                $bedrag = $product['bedrag'];
-
-                $TotalProductPrice = $aantal * $bedrag;
-
-                echo "
-                    <br>
-                    <div class='product'>
-                        <div class='producttitlediv'>
-                            <p class='producttitlecart'>$productnaam</p>
-                        </div>
-                            <button class='productminuscart'>-</button>
-                            <p class='productamountcart'>x$aantal</p>
-                            <button class='productpluscart'>+</button>
-                            <p class='pricecart'>€$TotalProductPrice</p>
-                    </div>";
-                }
             }else{
                 echo "Er zit niks in de winkelwagen, u kunt <a href='bestelpagina.php'><u>hier</u></a> kliken om terug te gaan om te bestellen";
             }
@@ -85,7 +82,7 @@ if(isset($_POST['loguit'])){
                     <p>Totaal:</p>
                 </div>
                 <div class="alignright">
-                    <p>€3,00</p>
+                    <p>€<?php echo number_format($totalebedrag, 2);?></p>
                 </div>
             </div>
 
