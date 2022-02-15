@@ -10,8 +10,45 @@ if(isset($_POST['loguit'])){
     session_destroy();
     header('Location: login.php');
 }
-?>
 
+$product_ids = array();
+if(isset($_POST['voegtoe'])){
+    //print_r($_POST['productid']);
+
+    if(isset($_SESSION['wagen'])){
+        $count = count($_SESSION['wagen']);
+        $product_ids = array_column($_SESSION['wagen'],'productid');
+        if(!in_array($_POST['productid'],$product_ids)){
+            $_SESSION['wagen'][$count] = array(
+                'productid' => $_POST['productid'],
+                'productnaam' => $_POST['productnaam'],
+                'bedrag' => $_POST['bedrag'],
+                'aantal' => $_POST['aantal']
+            );
+        }else{
+            for ($i = 0; $i < count($product_ids); $i++){
+                if ($product_ids[$i] == $_POST['productid']){
+                    $_SESSION['wagen'][$i]['aantal'] += $_POST['aantal'];
+                }
+            }
+        }
+    }else{
+        $_SESSION['wagen'][0] =array(
+            'productid' => $_POST['productid'],
+            'productnaam' => $_POST['productnaam'],
+            'bedrag' => $_POST['bedrag'],
+            'aantal' => $_POST['aantal']
+        );
+    }
+}
+
+
+function pre_r($array){
+    echo '<pre>';
+    print_r($array);
+    echo '</pre>';
+}
+?>
 
 
 <!DOCTYPE html>
@@ -22,81 +59,50 @@ if(isset($_POST['loguit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bestelpagina1.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/bestelpagina.css">
+    <title>Bestelpagina</title>
 </head>
 <body>
-    <div class="Productpagina">
-        <div class="leftbar1"></div>
-        <div class="rightbar1"></div>
+    <a href="winkelwagen.php"><button type="submit" name="winkelwagen">Winkelwagen</button></a>
+        <?php
+        if(isset($_SESSION['wagen'])){
+            $count = count($_SESSION['wagen']);
+            echo "<span>$count</span>";
+        }else{
+            echo "<span>0</span>";
+        }
+        ?>
+        <div class="Productpagina">
+            <div class="leftbar1"></div>
+            <div class="rightbar1"></div>
             <?php
             include "conn.php";
-            include "function.php";
-            Product($conn)
-             ?>
-        </div>
-
-    </div>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!doctype html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="stylesheet" href="css/bestelpagina1.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bestellen</title>
-    </head>
-    <body>
-        <h1>Bestelpagina</h1>
-
-        <form action="" method="GET" enctyoe="multipart/form-data">
-        <table border="1" cellpadding="4">
-            <tr>
-                <th>Productnaam</th>
-                <th>Image</th>
-                <th>Bedrag</th>
-            <tr>
-            <?php 
-            include "conn.php";
-            $sql="SELECT * FROM producten";
-            $sql_run = mysqli_query($conn, $sql);
-
-            while($row = mysqli_fetch_array($sql_run)){
-                ?>
-                <tr>
-                    <td> <?php echo $row['productnaam'] ?></td>
-                    <td> <?php echo '<img src="data:image;base64,'.base64_encode($row['foto']).'" alt="Image" class="foto">'; ?> </td>
-                    <td> €<?php echo $row['bedrag'] ?></td>
-                    <td><input type="number" name="aantal" placeholder="aantal" min="1" max="24" required></td>
-                </tr>    
-                <?php 
+            function Product($conn) {
+                $sql = " SELECT * FROM product";
+                if ($result = $conn->query($sql)) {
+                    foreach ($result as $row) {
+                        echo "
+                        <form method='POST' action=''>
+                        <div class='Productnested'>
+                            <div class='Productnaam'>$row[productnaam]</div>
+                            <div class='Productfoto'><img src='image/".$row['foto']."' ></div>
+                            <div class='prijs'>€$row[bedrag]</div>
+                            <input type='hidden' name='aantal' value='1'>
+                            <button type='submit' class='button' name='voegtoe'>Voeg toe <i class='fas fa-plus'></i></button>
+                            <input type='hidden' name='productid' value='$row[id]'>
+                            <input type='hidden' name='productnaam' value='$row[productnaam]'>
+                            <input type='hidden' name='bedrag' value='$row[bedrag]'>
+                        </div></form>
+                        ";
+                    }
+                }
             }
+            Product($conn)
             ?>
-        </table>
-        </form>
+        </div>
         
+        
+
         <form method='POST' action="mail.php">
             <input name="userid" value="<?php echo $_SESSION['userid']; ?>" hidden>
             <input name="email" value="<?php echo $_SESSION['email']; ?>" hidden>
@@ -105,12 +111,12 @@ if(isset($_POST['loguit'])){
             <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
             <input name="ophaaltijd" type='time' value="now"/>
             <button name="bestel">Bestel</button>   
-        </form>
-        <form method='POST' action="" >
-            <input type="submit" value="Logout" name="loguit">
-        </form>
-    
-    </body>
+    </form>
+    <form method='POST' action="" >
+        <input type="submit" value="Logout" name="loguit">
+    </form>
+
+</body>
 
 <script>
 $(function(){     
@@ -126,4 +132,3 @@ $(function(){
 </script>
 
 </html>
- -->
