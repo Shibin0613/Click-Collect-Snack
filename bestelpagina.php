@@ -100,18 +100,6 @@ function pre_r($array){
             Product($conn)
             ?>
         </div>
-        
-        
-
-        <form method='POST' action="mail.php">
-            <input name="userid" value="<?php echo $_SESSION['userid']; ?>" hidden>
-            <input name="email" value="<?php echo $_SESSION['email']; ?>" hidden>
-            <input name="voornaam" value="<?php echo $_SESSION['voornaam']; ?>" hidden>
-            <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" hidden>
-            <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
-            <input name="ophaaltijd" type='time' value="now"/>
-            <button name="bestel">Bestel</button>   
-    </form>
     <form method='POST' action="" >
         <input type="submit" value="Logout" name="loguit">
     </form>
