@@ -64,7 +64,7 @@ function pre_r($array){
 </head>
 <body>
     <a href="winkelwagen.php"><button type="submit" name="winkelwagen">Winkelwagen</button></a>
-        <?php
+    <?php
         if(isset($_SESSION['wagen'])){
             $count = count($_SESSION['wagen']);
             echo "<span>$count</span>";
@@ -72,6 +72,9 @@ function pre_r($array){
             echo "<span>0</span>";
         }
         ?>
+        <form method='POST' action="" >
+        <input type="submit" value="Logout" name="loguit">
+        </form>
         <div class="Productpagina">
             <div class="leftbar1"></div>
             <div class="rightbar1"></div>
@@ -100,9 +103,6 @@ function pre_r($array){
             Product($conn)
             ?>
         </div>
-    <form method='POST' action="" >
-        <input type="submit" value="Logout" name="loguit">
-    </form>
 
 </body>
 
