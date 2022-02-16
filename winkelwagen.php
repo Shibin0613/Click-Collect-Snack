@@ -1,14 +1,26 @@
 <?php
 session_start();
 // checken als de klant niet heeft ingelogd
-
+if(!isset($_SESSION['userid'])){
+    header('Location: login.php');
+}
 // logout
 if(isset($_POST['loguit'])){
     session_destroy();
     header('Location: login.php');
 }
 
+if(isset($_POST['delete'])){
+    foreach($_SESSION['wagen'] as $key =>$product){
+        if($product['productid'] == $_GET['id']){
+            unset($_SESSION['wagen'][$key]);
+        }
+    }
+    $_SESSION['wagen'] = array_values($_SESSION['wagen']);
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +33,11 @@ if(isset($_POST['loguit'])){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Winkelwagen</title>
 </head>
-
 <body>
+<a href="bestelpagina.php">Meer bestellen</a>
+    <form method='POST' action="" >
+        <input type="submit" value="Logout" name="loguit">
+    </form>
     <div class="flex">
         <div class="titlediv">
             <h1 class="titletext">Winkelwagen</h1>
@@ -39,12 +54,13 @@ if(isset($_POST['loguit'])){
         <div class="winkelwagenmain">
             
             <?php
+            $totalebedrag = 0;
             if(!empty($_SESSION['wagen'])){
-                $totalebedrag = 0;
                 foreach ($_SESSION['wagen'] as $key => $product):
                 //$V = $Value["Name"];
                 //echo "{$Key} => {$V} ";
                 ?>
+                <form method="POST" action="winkelwagen.php?action=delete&id=<?php echo $product['productid']; ?>" >
                 <br>
                 <div class='product'>
                     <div class='producttitlediv'>
@@ -54,7 +70,9 @@ if(isset($_POST['loguit'])){
                         <p class='productamountcart'>x<?php echo $product['aantal']; ?></p>
                         <button class='productpluscart'>+</button>
                         <p class='pricecart'>€<?php echo $product['bedrag']; ?></p>
+                        <button name="delete" class="buttoncla">Verwijderen</button>
                 </div>
+                </form>
                 <?php
                 $totalebedrag = $totalebedrag + ($product['aantal'] * $product['bedrag']);
             endforeach;
@@ -64,7 +82,6 @@ if(isset($_POST['loguit'])){
             }
             ?>
         </div>
-
         <div class="summary">
             <div class="flex">
                 <div class="alignleft">
@@ -85,13 +102,29 @@ if(isset($_POST['loguit'])){
                     <p>€<?php echo number_format($totalebedrag, 2);?></p>
                 </div>
             </div>
+        <?php
+        if (isset($_SESSION['wagen'])):
+            if(count($_SESSION['wagen']) >0):
+                ?>
+            <form method='POST' action="mail.php">
+            <input name="userid" value="<?php echo $_SESSION['userid']; ?>" hidden>
+            <input name="email" value="<?php echo $_SESSION['email']; ?>" hidden>
+            <input name="voornaam" value="<?php echo $_SESSION['voornaam']; ?>" hidden>
+            <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" hidden>
+            <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
+            <input name="ophaaltijd" type='time' value="now"/ required>
+            <input name="bestelling" value="<?php foreach ($_SESSION['wagen'] as $key => $product): ?><?php echo $product['aantal']; ?> * <?php echo $product['productnaam']; ?><?php echo","; ?><?php endforeach;?> " hidden>
+            <input name="bedrag" value="€<?php echo $totalebedrag; ?>" hidden>
+            <button name="bestel">Bestel</button>
+            </form>
+                <?php endif; endif; ?>
+                
 
-            <button class="orderbtn">Bestel nu</button>
+        
+            
         </div>
     </div>
-    <form method='POST' action="" >
-        <input type="submit" value="Logout" name="loguit">
-    </form>
+    
 </body>
 
 </html>

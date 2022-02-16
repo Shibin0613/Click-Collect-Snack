@@ -1,3 +1,16 @@
+<?php
+session_start();
+// checken als de klant niet heeft ingelogd
+if(!isset($_SESSION['userid'])){
+    header('Location: login.php');
+}
+
+// logout
+if(isset($_POST['loguit'])){
+    session_destroy();
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +26,10 @@
 </head>
 
 <body>
+<a href="beheer.php"><input type="submit" value="Beheer"></a>
+<form method='POST' action="" >
+        <input type="submit" value="Logout" name="loguit">
+</form>
     <center>
         <div class="profiel-container">
             <h2 class="profiel">Snackie toevoegen</h2>
@@ -31,10 +48,6 @@
 </body>
 
 </html>
-
-
-
-
 
 
 

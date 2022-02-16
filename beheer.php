@@ -25,11 +25,10 @@ if(isset($_POST['loguit'])){
 
 <table class= "tabel">
 <tr>
-  <th>bestel nummer</th>
-  <th>naam</th>
-  <th>tijd</th>
-  <th>status</th>
-  <th>bestelling</th>
+  <th>Bestelnr</th>
+  <th>Achternaam</th>
+  <th>Ophaaltijd</th>
+  <th>Status</th>
 </tr>
 
 <?php
@@ -43,16 +42,18 @@ if($total!=0){
     while($result=mysqli_fetch_assoc($data)){
         echo "
         <tr>
-        <td>".$result['bestel nummer']."</td>
-        <td>".$result['naam']."</td>
-        <td>".$result['tijd']."</td>
+        <td>".$result['bestelnr']."</td>
+        <td>".$result['achternaam']."</td>
+        <td>".$result['ophaaltijd']."</td>
         <td>".$result['status']."</td>
         <td>".$result['bestelling']."</td>
         <td>
-        <form  enctype='multipart/form-data' action='' method='POST'>
-        <button class='knop'type='knop' name='open'>open</button> 
-        </form>
-       
+        <button onclick=myFunction()>Click me</button>
+           <script>
+        function myFunction() {
+          document.getElementById(demo).innerHTML = Hello World;
+        }
+        
         
      
         </script>
@@ -67,10 +68,6 @@ if($total!=0){
     </tr>
     ";
 }
-
-   
-
-
 ?>
 </table>
 
@@ -86,14 +83,14 @@ if($total!=0){
     
 
 <?php
-        include "conn.php";
-    error_reporting(0);
-    $query= "select * FROM products where id = 1";
-    $data = mysqli_query($conn,$query);
+include "conn.php";
+error_reporting(0);
+$query= "select * FROM products where id = 1";
+$data = mysqli_query($conn,$query);
 
 
-    
-    
+if($total!=0){
+    while($result=mysqli_fetch_assoc($data)){
         echo "
   
         <div class='doos2'>
@@ -101,44 +98,22 @@ if($total!=0){
         <li> naam ".$result['naam']."</li>
         <li> afhaaltijd ".$result['afhaaltijd']."</li>
         </div>
-    
-        
-      
-           
+
+
         <div class='doos3'>
-          if (isset($_POST[open])){ 
-            echo'
-            
         <li> producten in winkelmand</li>
         <li>".$result['naam']."</li>
         <li>".$result['naam']."</li>
         <li>".$result['naam']."</li>
-        ';}
         </div>
-        
-        
 
-        <form  enctype='multipart/form-data' action='' method='POST'>
         <div class='doos4'>
-        <li> <button class='knop'type='knop' name='knop'>klaar</button> </li>
+        <li><button onclick=myFunction()>klaar</button></li>
         <div>
-        </form>
          ";
 
-    
-    
- 
-    if (isset($_POST['knop'])){
-
-    
-    $conn->query( "DELETE FROM bestelling WHERE status='klaar'"); 
- 
-    }   
-
-    
- 
-
-
+    }
+}
 ?>
 
 
