@@ -113,7 +113,7 @@ if(isset($_POST['delete'])){
             <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" hidden>
             <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
             <input name="ophaaltijd" type='time' value="now"/ required>
-            <input name="bestelling" value="<?php foreach ($_SESSION['wagen'] as $key => $product): ?> <?php echo $product['aantal']; ?> * <?php echo $product['productnaam']; ?> <?php echo"<br/>" ?> <?php endforeach;?> ">
+            <input name="bestelling" value="<?php foreach ($_SESSION['wagen'] as $key => $product): ?> <?php echo "$product['aantal']; "  ?> * <?php echo "$product['productnaam']; \n" ?> <?php echo"<br/>" ?> <?php endforeach;?> ">
             <input name="bedrag" value="€<?php echo $totalebedrag; ?>" hidden>
             <button name="bestel">Bestel</button>
             </form>
