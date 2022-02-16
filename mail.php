@@ -6,9 +6,11 @@ if(isset($_POST['bestel'])){
     $telef=$_POST['telef'];
     $email=$_POST['email'];
     $ophaaltijd=$_POST['ophaaltijd'];
+    $bestelling=$_POST['bestelling'];
+    $bedrag=$_POST['bedrag'];
     
     $subject= "U heeft een bestelling geplaatst";
-    $body = "Beste $achternaam, \r\nu heeft een bestelling gedaan
+    $body = "Beste $achternaam, \r\nu heeft een bestelling gedaan: \r\n\r\n$bestelling \r\n\r\n$bedrag
     \r\nU kunt uw bestelling komen ophalen om $ophaaltijd. \r\n\r\nEet smakelijk!\r\n\r\nMet vriendelijke groet,\r\nSnackhoek";
     
     if(mail($email, $subject, $body)){
