@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/registratie1.css">
     <title>Registreren</title>
 </head>
@@ -23,6 +22,7 @@
         <br>
         <input class="registratie" type="password" name="wachtwoord" placeholder="Wachtwoord" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" title="Minimaal 8 karakters, met een hoofdletter, kleinletter en een getal"required>
         <br>
+        <input name="usertype" value="user" hidden>
         <button class="voeg-toe" type="submit" name="registreren">Registreren</button>
       </form>
 </div>
@@ -47,10 +47,11 @@ if(isset($_POST['registreren'])) {
   $telef=$_POST['telef'];
   $email=$_POST['email'];
   $wachtwoord=$_POST['wachtwoord'];
+  $user=$_POST['usertype'];
   
   //prepare en bind
   $SELECT = "SELECT email from users Where email = ? Limit 1";
-  $insertSQL = "INSERT INTO users(`voornaam`, `achternaam`,`telef`,`email`,`wachtwoord`) values(?,?,?,?,?)";
+  $insertSQL = "INSERT INTO users(`voornaam`, `achternaam`,`telef`,`email`,`wachtwoord`,`usertype`) values(?,?,?,?,?,?)";
   
   $stmt = $conn->prepare($SELECT);
   $stmt->bind_param("s", $email);
@@ -64,7 +65,7 @@ if(isset($_POST['registreren'])) {
     $stmt->close();
     
     $stmt = $conn->prepare($insertSQL);
-    $stmt->bind_param("sssss",$voornaam,$achternaam, $telef,$email,$wachtwoord);
+    $stmt->bind_param("ssssss",$voornaam,$achternaam, $telef,$email,$wachtwoord,$user);
     $stmt->execute();
     echo "<script>alert('Gefeliciteerd, uw account is aangemaakt, u mag door met bestellen')</script>";
     ?>
