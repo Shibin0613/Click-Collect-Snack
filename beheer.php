@@ -18,7 +18,7 @@ if(isset($_POST['loguit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/beheer.css">
+    <link rel="stylesheet" href="css/beheer1.css">
     <title>beheer</title>
     </head>
 <body>
@@ -45,22 +45,28 @@ if($total!=0){
         <td>".$result['bestelnr']."</td>
         <td>".$result['achternaam']."</td>
         <td>".$result['ophaaltijd']."</td>
-        <td>".$result['status']."</td>
+      
         <td>".$result['bestelling']."</td>
         <td>
         <button onclick=myFunction()>Click me</button>
-           <script>
-        function myFunction() {
-          document.getElementById(demo).innerHTML = Hello World;
-        }
         
-        
-     
-        </script>
-        </td>
-        </tr>
-        ";
-    }
+       
+               <div class=popup onclick=myFunction() >
+    <span class=popuptext id=myPopup>
+    <li>
+    
+     archternaam :".$result['achternaam']." 
+     <br> <br>
+    email :".$result['email']."
+    <br><br>
+    telnr :".$result['telef']."
+    <br>
+    <br>
+    ".$result['bestelling']."
+    </li>
+";}
+ 
+
 }else{
     echo "
     <tr>
@@ -77,45 +83,14 @@ if($total!=0){
         <input type="submit" value="Logout" name="loguit">
 </form>
 
-</body>
-</html>
+</div>
+<script>
 
-    
-
-<?php
-include "conn.php";
-error_reporting(0);
-$query= "select * FROM products where id = 1";
-$data = mysqli_query($conn,$query);
-
-
-if($total!=0){
-    while($result=mysqli_fetch_assoc($data)){
-        echo "
-  
-        <div class='doos2'>
-        <li> bestelnr ".$result['bestelnr']."</li>
-        <li> naam ".$result['naam']."</li>
-        <li> afhaaltijd ".$result['afhaaltijd']."</li>
-        </div>
-
-
-        <div class='doos3'>
-        <li> producten in winkelmand</li>
-        <li>".$result['naam']."</li>
-        <li>".$result['naam']."</li>
-        <li>".$result['naam']."</li>
-        </div>
-
-        <div class='doos4'>
-        <li><button onclick=myFunction()>klaar</button></li>
-        <div>
-         ";
-
-    }
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
 }
-?>
-
+</script>
 
 
 
