@@ -34,6 +34,7 @@
 </html>
 
 <?php
+include "balkklant.php";
 include "conn.php";
 
 if(isset($_POST['submit'])) {

@@ -34,6 +34,9 @@ if(isset($_POST['delete'])){
     <title>Winkelwagen</title>
 </head>
 <body>
+    <?php
+    include "balkklant.php";
+    ?>
 <a href="bestelpagina.php">Meer bestellen</a>
     <form method='POST' action="" >
         <input type="submit" value="Logout" name="loguit">

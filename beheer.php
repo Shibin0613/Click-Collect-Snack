@@ -1,4 +1,5 @@
 <?php
+include "balkbeheerder.php";
 session_start();
 // checken als de klant niet heeft ingelogd
 if(!isset($_SESSION['userid'])){
@@ -18,7 +19,7 @@ if(isset($_POST['loguit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/beheer1.css">
+    <link rel="stylesheet" href="css/beheer.css">
     <title>beheer</title>
     </head>
 <body>
@@ -77,7 +78,6 @@ if($total!=0){
 ?>
 </table>
 
-<a href="snackietoevoegen.php"><input type="submit" value="Snacktoeveogen"></a>
 
 <form method='POST' action="" >
         <input type="submit" value="Logout" name="loguit">

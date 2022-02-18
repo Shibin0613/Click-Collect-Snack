@@ -26,6 +26,9 @@ if(isset($_POST['loguit'])){
 </head>
 
 <body>
+    <?php
+    include "balkbeheerder.php";
+    ?>
 <a href="beheer.php"><input type="submit" value="Beheer"></a>
 <form method='POST' action="" >
         <input type="submit" value="Logout" name="loguit">
