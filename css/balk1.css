@@ -1,5 +1,5 @@
 body {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     background-color: rgb(219, 219, 219);
 }
 
@@ -17,7 +17,10 @@ body {
 
 .topnav {
     margin-top: 1%;
+}
 
-    color: rgb(46, 46, 46);
+.topnav a {
+    color: rgb(77, 77, 77);
     text-decoration: inherit;
+    margin: 2%;
 }

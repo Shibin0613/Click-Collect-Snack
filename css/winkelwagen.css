@@ -177,11 +177,6 @@ body {
 
 .freeform {
     display: inline-flex;
-    margin-left: 25%;
+    margin-left: 40%;
     width: 25%;
-}
-
-.hidden {
-    position: absolute;
-    display: none;
 }
