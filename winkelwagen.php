@@ -65,9 +65,7 @@ if(isset($_POST['delete'])){
                     <div class='producttitlediv'>
                         <p class='producttitlecart'><?php echo $product['productnaam']; ?></p>
                     </div>
-                        <button class='productminuscart'>-</button>
                         <p class='productamountcart'>x<?php echo $product['aantal']; ?></p>
-                        <button class='productpluscart'>+</button>
                         <p class='pricecart'>€<?php echo $product['bedrag']; ?></p>
                         <button name="delete" class="buttoncla">Verwijderen</button>
                 </div>
