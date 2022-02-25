@@ -1,5 +1,4 @@
 <?php
-include "balkbeheerder.php";
 session_start();
 // checken als de klant niet heeft ingelogd
 if(!isset($_SESSION['userid'])){
@@ -20,16 +19,19 @@ if(isset($_POST['loguit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/beheer.css">
-    <title>beheer</title>
+    <title>Beheer</title>
     </head>
 <body>
-
+    <?php include "balkbeheerder.php"; ?>
 <table class= "tabel">
 <tr>
   <th>Bestelnr</th>
   <th>Achternaam</th>
+  <th>Telef</th>
+  <th>Email</th>
   <th>Ophaaltijd</th>
-  <th>Status</th>
+  <th>Bestelling</th>
+  <th>Bedrag</th>
 </tr>
 
 <?php
@@ -45,26 +47,12 @@ if($total!=0){
         <tr>
         <td>".$result['bestelnr']."</td>
         <td>".$result['achternaam']."</td>
+        <td>".$result['telef']."</td>
+        <td>".$result['email']."</td>
         <td>".$result['ophaaltijd']."</td>
-      
         <td>".$result['bestelling']."</td>
-        <td>
-        <button onclick=myFunction()>Click me</button>
+        <td>".$result['bedrag']."</td>
         
-       
-               <div class=popup onclick=myFunction() >
-    <span class=popuptext id=myPopup>
-    <li>
-    
-     archternaam :".$result['achternaam']." 
-     <br> <br>
-    email :".$result['email']."
-    <br><br>
-    telnr :".$result['telef']."
-    <br>
-    <br>
-    ".$result['bestelling']."
-    </li>
 ";}
  
 
@@ -77,11 +65,6 @@ if($total!=0){
 }
 ?>
 </table>
-
-
-<form method='POST' action="" >
-        <input type="submit" value="Logout" name="loguit">
-</form>
 
 </div>
 <script>
