@@ -10,7 +10,7 @@ if(isset($_POST['bestel'])){
     $bedrag=$_POST['bedrag'];
     
     $subject= "U heeft een bestelling geplaatst";
-    $body = "<img scr='https://www.snackhoek-sneek.nl/www.snackhoek-sneek.nl/img/logo.png' alt='snacklogo'>\r\nBeste $achternaam, \r\nU heeft een bestelling gedaan:\r\n\r\n$bestelling \r\n\r\nDe totale bedrag is $bedrag.
+    $body = "Beste $achternaam, \r\nU heeft een bestelling gedaan:\r\n\r\n$bestelling \r\n\r\nDe totale bedrag is $bedrag.
     \r\nU kunt uw bestelling komen ophalen om $ophaaltijd. \r\n\r\nEet smakelijk!\r\n\r\nMet vriendelijke groet,\r\nSnackhoek";
     
     if(mail($email, $subject, $body)){
