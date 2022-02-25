@@ -25,6 +25,7 @@
         <input name="usertype" value="user" hidden>
         <button class="voeg-toe" type="submit" name="registreren">Registreren</button>
       </form>
+      <a href="login.php"><button class="voeg-toe">Inlog</button></a>
 </div>
 </body>
 
