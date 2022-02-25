@@ -37,10 +37,6 @@ if(isset($_POST['delete'])){
     <?php
     include "balkklant.php";
     ?>
-<a href="bestelpagina.php">Meer bestellen</a>
-    <form method='POST' action="" >
-        <input type="submit" value="Logout" name="loguit">
-    </form>
     <div class="flex">
         <div class="titlediv">
             <h1 class="titletext">Winkelwagen</h1>
@@ -115,7 +111,7 @@ if(isset($_POST['delete'])){
             <input name="voornaam" value="<?php echo $_SESSION['voornaam']; ?>" hidden>
             <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" hidden>
             <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
-            <input name="ophaaltijd" type='time' value="<?php $time=date_default_timezone_get(); $time=date("H:i", strtotime("+30 minutes")); echo $time;?>" min="12:00" min="<?php echo $time; ?>" max='21:00' required>
+            <input name="ophaaltijd" type='time' value="<?php $time=date_default_timezone_get(); $time=date("H:i", strtotime("+30 minutes")); echo $time;?>" min="12:00" min='<?php echo $time; ?>' max='21:00' required>
             <input name="bestelling" value="<?php foreach ($_SESSION['wagen'] as $key => $product): ?><?php echo $product['aantal']; ?> * <?php echo $product['productnaam']; ?><?php echo","; ?> <?php endforeach;?> " hidden>
             <input name="bedrag" value="€<?php echo $totalebedrag; ?>" hidden>
             <button name="bestel">Bestel</button>
