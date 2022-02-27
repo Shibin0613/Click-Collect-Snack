@@ -44,7 +44,51 @@ if(isset($_POST['loguit'])){
             </form>
         </div>
     </center>
+
+    <center>
+        
+        <div class="profiel-container"><table>
+            <h2 class="profiel">Snackie verwijderen</h2>
+            <tr>
+        <th>Productnaam</th>
+        <th>Bedrag</th>
+        <th colspan="2" align="center">Verwijderen</th>
+    </tr>
+<?php
+include("conn.php");
+error_reporting(0);
+$query= "select * from product";
+$data = mysqli_query($conn,$query);
+$total = mysqli_num_rows($data);
+
+if($total!=0){
+    while($result=mysqli_fetch_assoc($data)){
+        echo "
+        <tr>
+        <td>".$result['productnaam']."</td>
+        <td>".$result['bedrag']."</td>
+        <td><a href='delete.php?id=$result[id]' onclick='return checkdelete()'><input type='submit' class='submit'value='Verwijderen'></a></td>
+        </tr>
+        ";
+    }
+}else{
+    echo "
+    <tr>
+    <th colspan='2'>Er is geen data gevonden!!!</th>
+    </tr>
+    ";
+}
+?>
+</table>
+        </div>
+    </center>
 </body>
+
+<script>
+function checkdelete(){
+  return confirm('Weet je zeker dat je deze account willen verwijderen?');
+}
+</script>
 
 </html>
 
