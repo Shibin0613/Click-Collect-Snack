@@ -58,6 +58,11 @@ box-shadow: 2px 3px rgb(185, 185, 185);
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 2;
+
+  margin: 5%;
+  margin-left: 25%;
+  margin-bottom: 8%;
+  margin-top: 1%;
 }
 .button {
   width: 90%;

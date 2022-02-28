@@ -38,9 +38,10 @@ body {
 }
 
 .productamountcart {
-    padding-top: 10%;
+    padding-top: 1%;
     font-size: 120%;
     margin: 2%;
+    margin-left: 10%;
 }
 
 .winkelwagenmain {
@@ -123,8 +124,15 @@ body {
     font-size: 150%;
     margin: 2%;
     margin-left: 6%;
-    padding-top: 10%;
+    padding-top: 1%;
     text-align: center;
+}
+
+.deletebtn {
+    margin-left: 10%;
+    background-color: rgb(227, 227, 227);
+    border: none;
+    width: 15%;
 }
 
 .titlediv {
@@ -179,4 +187,8 @@ body {
     display: inline-flex;
     margin-left: 40%;
     width: 25%;
+}
+
+.buttoncla{
+    
 }

@@ -28,7 +28,7 @@ if(isset($_POST['delete'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/winkelwagen1.css">
+    <link rel="stylesheet" href="css/winkelwagen.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Winkelwagen</title>
@@ -67,7 +67,7 @@ if(isset($_POST['delete'])){
                     </div>
                         <p class='productamountcart'>x<?php echo $product['aantal']; ?></p>
                         <p class='pricecart'>€<?php echo $product['bedrag']; ?></p>
-                        <button name="delete" class="buttoncla">Verwijderen</button>
+                        <button name="delete" class="deletebtn">Verwijderen</button>
                 </div>
                 </form>
                 <?php
@@ -109,8 +109,16 @@ if(isset($_POST['delete'])){
             <input name="voornaam" value="<?php echo $_SESSION['voornaam']; ?>" hidden>
             <input name="achternaam" value="<?php echo $_SESSION['achternaam']; ?>" hidden>
             <input name="telef" value="<?php echo $_SESSION['telef']; ?>" hidden>
+
+            <input name="ophaaltijd" type='time' value="<?php $time=date_default_timezone_get(); $time=date("H:i", strtotime("+30 minutes")); echo $time;?>" min="12:00" min='<?php echo $time; ?>' max='21:00' required>
+
             <input name="ophaaltijd" type='time' value="<?php $time=date_default_timezone_get(); $time1=date("H:i", strtotime("+30 minutes")); echo $time1;?>" min="12:00" min="<?php echo $time; ?>" min="<?php echo $time1; ?>" max='21:00' required>
+
             <input name="bestelling" value="<?php foreach ($_SESSION['wagen'] as $key => $product): ?><?php echo $product['aantal']; ?> * <?php echo $product['productnaam']; ?><?php echo","; ?> <?php endforeach;?> " hidden>
+
+            <input name="ophaaltijd" type='time' value="now"/ required>
+            <input name="bestelling" value="<?php foreach ($_SESSION['wagen'] as $key => $product): ?> <?php echo $product['aantal'];   ?> * <?php echo $product['productnaam'];  ?>  <?php endforeach;?> ">
+
             <input name="bedrag" value="€<?php echo $totalebedrag; ?>" hidden>
             <button name="bestel">Bestel</button>
             </form>

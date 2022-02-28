@@ -59,7 +59,7 @@ function pre_r($array){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bestelpagina1.css">
+    <link rel="stylesheet" href="css/bestelpagina.css">
     <title>Bestelpagina</title>
 </head>
 <body>
@@ -80,7 +80,7 @@ function pre_r($array){
                         <form method='POST' action=''>
                         <div class='Productnested'>
                             <div class='Productnaam'>$row[productnaam]</div>
-                            <div class='Productfoto'><img src='image/".$row['foto']."' ></div>
+                            <div class='Productfoto'><img width='200' height='150' src='image/".$row['foto']."' ></div>
                             <div class='prijs'>€$row[bedrag]</div>
                             <input type='hidden' name='aantal' value='1'>
                             <button type='submit' class='button' name='voegtoe'>Voeg toe <i class='fas fa-plus'></i></button>
