@@ -30,7 +30,7 @@ if(isset($_POST['loguit'])){
   <th>Telef</th>
   <th>Email</th>
   <th>Ophaaltijd</th>
-  <th>Bestelling</th>
+  
   <th>Bedrag</th>
 </tr>
 
@@ -50,9 +50,24 @@ if($total!=0){
         <td>".$result['telef']."</td>
         <td>".$result['email']."</td>
         <td>".$result['ophaaltijd']."</td>
-        <td>".$result['bestelling']."</td>
         <td>".$result['bedrag']."</td>
+        <td>
+        <button id='myButton".$result['bestelnr']."' onclick=myFunction(".$result['bestelnr'].")>Tonen</button>
         
+
+<div class=popup onclick=myFunction() >
+<span class=popuptext id= myPopup".$result['bestelnr'].">
+<li>
+
+ archternaam :".$result['achternaam']." 
+ <br> <br>
+email :".$result['email']."
+<br><br>
+telnr :".$result['telef']."
+<br>
+<br>
+".$result['bestelling']."
+</li>
 ";}
  
 
@@ -69,9 +84,20 @@ if($total!=0){
 </div>
 <script>
 
-function myFunction() {
-  var popup = document.getElementById("myPopup");
+function myFunction(bestelnummer) {
+  var popup = document.getElementById("myPopup"+bestelnummer);
   popup.classList.toggle("show");
+
+
+  var btn = document.getElementById("myButton"+bestelnummer);
+  console.log(btn.value);
+    if (btn.value=="Tonen"){
+        btn.value = "Verbergen";
+        btn.innerHTML = 'Tonen';
+    }else{
+        btn.value = "Tonen";
+        btn.innerHTML = 'Verbergen';
+    } 
 }
 </script>
 
