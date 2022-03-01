@@ -18,7 +18,7 @@ if(isset($_POST['loguit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/profiel1.css">
+    <link rel="stylesheet" href="css/profiel.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -33,8 +33,8 @@ if(isset($_POST['loguit'])){
         <div class="profiel-container">
             <h2 class="profiel">Snackie toevoegen</h2>
             <form method="POST" action="" enctype="multipart/form-data">
-                <input class="naam" type="text" name="productnaam" placeholder="Naam" maxlength="10" required><br>
-                <input class="naam" type="text" name="bedrag" maxlength="10" placeholder="Bedrag" required><br>
+                <input class="naam" type="txt" name="productnaam" placeholder="Naam" required><br>
+                <input class="naam" type="txt" name="bedrag" placeholder="Bedrag" required><br>
                 <input class="" type="file" id="file" name="image" accept="image/*" required>
                 <label for="file">
                     <i class="far fa-file-image"></i> &nbsp;
@@ -48,11 +48,11 @@ if(isset($_POST['loguit'])){
     <center>
         
         <div class="profiel-container"><table>
-            <h2 class="profiel">Snackie wijzigen/verwijderen</h2>
+            <h2 class="profiel">Snackie verwijderen</h2>
             <tr>
         <th>Productnaam</th>
         <th>Bedrag</th>
-        <th colspan="2" align="center">Wijzigen/Verwijderen</th>
+        <th colspan="2" align="center">Verwijderen</th>
     </tr>
 <?php
 include("conn.php");
@@ -63,18 +63,13 @@ $total = mysqli_num_rows($data);
 
 if($total!=0){
     while($result=mysqli_fetch_assoc($data)){
-        ?>
+        echo "
         <tr>
-        <form action="" method="POST">
-        <input type="hidden" name="id" value="<?php echo $result['id'];?>"> 
-        <td><input type="text" class="wijzigen" name="productnaam" maxlength="10" value="<?php echo $result['productnaam'];?>"></td>
-        <td><input type="text" class="wijzigen" name="bedrag" maxlength="10" value="<?php echo $result['bedrag']; ?>"></td>
-        <td><input type="submit" name="submit" class="opslaan" value="Opslaan"></td>
-        </form>
-        <td><a href="delete.php?id=<?php echo $result['id']; ?>" onclick="return checkdelete()"><input type="submit" class="opslaan" value="Verwijderen"></a></td>
+        <td>".$result['productnaam']."</td>
+        <td>".$result['bedrag']."</td>
+        <td><a href='delete.php?id=$result[id]' onclick='return checkdelete()'><input type='submit' class='submit'value='Verwijderen'></a></td>
         </tr>
-    
-        <?php
+        ";
     }
 }else{
     echo "
@@ -101,7 +96,6 @@ function checkdelete(){
 
 <?php
 include "conn.php";
-error_reporting(0);
 
 // if (isset($_POST['submit'])) {
 //     $naam = $_POST['naam'];
@@ -127,34 +121,9 @@ if(isset($_POST['submit'])) {
     
     if($query_run){
         echo "<script>alert('Product is toegevoegd.')</script>";
-        ?>
-    <META HTTP-EQUIV="Refresh" CONTENT="0; URL=snackietoevoegen.php">
-    <?php
     }else{
         echo "<script>alert('Het is niet gelukt')</script>";
     }
 }
 }
-
-
-
-if($_POST['opslaan']){
-    $id=$_POST['id'];
-    $productnaam=$_POST['productnaam'];
-    $bedrag=$_POST['bedrag'];
-    
-    $query = "UPDATE product SET productnaam='$productnaam',bedrag='$bedrag' WHERE id='$id'";
-    $query_run= mysqli_query($conn, $query);
-    
-    if($query_run){
-        echo "<script>alert('gegevens opgeslagen')</script>";
-    ?>
-    <META HTTP-EQUIV="Refresh" CONTENT="0; URL=snackietoevoegen.php">
-    <?php
-    }else{
-        echo "<script>alert('Het is niet gelukt om uw gegevens te wijzigen, Probeer later opnieuw')</script>";
-    }
-}
-
-
 ?>
