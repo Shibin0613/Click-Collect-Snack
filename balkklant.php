@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klant</title> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/balk1.css">
+    <link rel="stylesheet" href="css/balk2.css">
 </head>
 <body>
     <div class="balk">
         <nav class="topnav">
-                <form method='POST' action="" >
+            <form method='POST' action="" >
                 <a href="bestelpagina.php">Bestel</a>
                 <a href="winkelwagen.php">Winkelwagen</a>
                 <?php
@@ -22,8 +22,7 @@
                     echo "<span>0</span>";
                 }
                 ?>
-                
-                    <button type="submit" class="loguit" name="loguit">Loguit</button>
+                <button type="submit" class="loguit" name="loguit">Loguit</button>
                 </form>
                 
         </nav>
