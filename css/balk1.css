@@ -40,12 +40,13 @@ body {
 }
 
 .loguit{
-    padding-left: 50px;
-    padding-bottom: 20px;
-    color: #fc0;
+    float: right;
+    display: flex;
+    color: rgb(0, 0, 0);
     border: none;
-    background-color: rgb(234, 233, 233);
-    
+    background-color: rgb(255, 196, 0);
+    border-radius: 20px;
+    padding:10px;
 }
 
 .loguit:hover{
