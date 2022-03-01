@@ -33,7 +33,7 @@ if(isset($_POST['loguit'])){
         <div class="profiel-container">
             <h2 class="profiel">Snackie toevoegen</h2>
             <form method="POST" action="" enctype="multipart/form-data">
-                <input class="naam" type="text" name="productnaam" placeholder="Naam" maxlength="10" required><br>
+                <input class="naam" type="text" name="productnaam" placeholder="Naam" maxlength="15" required><br>
                 <input class="naam" type="text" name="bedrag" maxlength="10" placeholder="Bedrag" required><br>
                 <input class="" type="file" id="file" name="image" accept="image/*" required>
                 <label for="file">
@@ -67,9 +67,9 @@ if($total!=0){
         <tr>
         <form action="" method="POST">
         <input type="hidden" name="id" value="<?php echo $result['id'];?>"> 
-        <td><input type="text" class="wijzigen" name="productnaam" maxlength="10" value="<?php echo $result['productnaam'];?>"></td>
-        <td><input type="text" class="wijzigen" name="bedrag" maxlength="10" value="<?php echo $result['bedrag']; ?>"></td>
-        <td><input type="submit" name="submit" class="opslaan" value="Opslaan"></td>
+        <td><input type="text" class="wijzigen" name="productnaam" maxlength="15" value="<?php echo $result['productnaam'];?>"></td>
+        <td><input type="text" class="wijzigen" name="bedrag" min="0" maxlength="10" value="<?php echo $result['bedrag']; ?>"></td>
+        <td><input type="submit" name="opslaan" class="opslaan" value="Opslaan"></td>
         </form>
         <td><a href="delete.php?id=<?php echo $result['id']; ?>" onclick="return checkdelete()"><input type="submit" class="opslaan" value="Verwijderen"></a></td>
         </tr>
