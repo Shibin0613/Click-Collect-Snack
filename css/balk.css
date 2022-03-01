@@ -38,3 +38,16 @@ body {
 .topnav a:hover{
     color: rgb(172, 138, 4);
 }
+
+.loguit{
+    padding-left: 50px;
+    padding-bottom: 20px;
+    color: #fc0;
+    border: none;
+    background-color: rgb(234, 233, 233);
+    
+}
+
+.loguit:hover{
+    color: rgb(172, 138, 4);
+}
