@@ -19,13 +19,13 @@ if (isset($_POST['loguit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/beheer.css">
+    <link rel="stylesheet" href="css/beheer1.css">
     <title>Beheer</title>
 </head>
 
 <body>
     <?php include "balkbeheerder.php"; ?>
-    <table class="tabel">
+    <table class="table">
         <tr>
             <th>Bestelnr</th>
             <th>Achternaam</th>
