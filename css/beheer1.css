@@ -73,10 +73,11 @@ hr {
 
 
 .popup {
-  position: relative;
+  position: absolute;
   display: inline-block;
   cursor: pointer;
   user-select: none;
+  right:400px;
 }
 
 /*popup */
