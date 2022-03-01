@@ -29,13 +29,12 @@ include "conn.php";
 if($conn->connect_error){
     die('Connection Failed : '.$conn->connect_error);
 }else{
-    $stmt = $conn->prepare("insert into bestelling(achternaam,telef,email,ophaaltijd,bestelling,bedrag) values(?,?,?,?,?,?)");
+    $stmt = $conn->prepare("INSERT INTO bestelling(achternaam,telef,email,ophaaltijd,bestelling,bedrag) values(?,?,?,?,?,?)");
     $stmt->bind_param("ssssss",$achternaam,$telef,$email,$ophaaltijd,$bestelling,$bedrag);
     $stmt->execute();
     $stmt->close();
     $conn->close();
 }
-?>
 ?>
 
       
