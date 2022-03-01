@@ -1,39 +1,39 @@
 <?php
 session_start();
 // checken als de klant niet heeft ingelogd
-if(!isset($_SESSION['userid'])){
+if (!isset($_SESSION['userid'])) {
     header('Location: login.php');
 }
 
 // logout
-if(isset($_POST['loguit'])){
+if (isset($_POST['loguit'])) {
     session_destroy();
     header('Location: login.php');
 }
 
 $product_ids = array();
-if(isset($_POST['voegtoe'])){
+if (isset($_POST['voegtoe'])) {
     //print_r($_POST['productid']);
 
-    if(isset($_SESSION['wagen'])){
+    if (isset($_SESSION['wagen'])) {
         $count = count($_SESSION['wagen']);
-        $product_ids = array_column($_SESSION['wagen'],'productid');
-        if(!in_array($_POST['productid'],$product_ids)){
+        $product_ids = array_column($_SESSION['wagen'], 'productid');
+        if (!in_array($_POST['productid'], $product_ids)) {
             $_SESSION['wagen'][$count] = array(
                 'productid' => $_POST['productid'],
                 'productnaam' => $_POST['productnaam'],
                 'bedrag' => $_POST['bedrag'],
                 'aantal' => $_POST['aantal']
             );
-        }else{
-            for ($i = 0; $i < count($product_ids); $i++){
-                if ($product_ids[$i] == $_POST['productid']){
+        } else {
+            for ($i = 0; $i < count($product_ids); $i++) {
+                if ($product_ids[$i] == $_POST['productid']) {
                     $_SESSION['wagen'][$i]['aantal'] += $_POST['aantal'];
                 }
             }
         }
-    }else{
-        $_SESSION['wagen'][0] =array(
+    } else {
+        $_SESSION['wagen'][0] = array(
             'productid' => $_POST['productid'],
             'productnaam' => $_POST['productnaam'],
             'bedrag' => $_POST['bedrag'],
@@ -43,7 +43,8 @@ if(isset($_POST['voegtoe'])){
 }
 
 
-function pre_r($array){
+function pre_r($array)
+{
     echo '<pre>';
     print_r($array);
     echo '</pre>';
@@ -53,6 +54,7 @@ function pre_r($array){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,25 +64,27 @@ function pre_r($array){
     <link rel="stylesheet" href="css/bestelpagina.css">
     <title>Bestelpagina</title>
 </head>
+
 <body>
     <?php
     include "balkklant.php";
     ?>
-        <div class="Productpagina">
-            <div class="leftbar1"></div>
-            <div class="rightbar1"></div>
-            <?php
-            
-            include "conn.php";
-            function Product($conn) {
-                $sql = " SELECT * FROM product";
-                if ($result = $conn->query($sql)) {
-                    foreach ($result as $row) {
-                        echo "
+    <div class="Productpagina">
+        <div class="leftbar1"></div>
+        <div class="rightbar1"></div>
+        <?php
+
+        include "conn.php";
+        function Product($conn)
+        {
+            $sql = " SELECT * FROM product";
+            if ($result = $conn->query($sql)) {
+                foreach ($result as $row) {
+                    echo "
                         <form method='POST' action=''>
                         <div class='Productnested'>
                             <div class='Productnaam'>$row[productnaam]</div>
-                            <div class='Productfoto'><img width='200' height='150' src='image/".$row['foto']."' ></div>
+                            <div class='Productfoto'><img width='200' height='150' src='image/" . $row['foto'] . "' ></div>
                             <div class='prijs'>€$row[bedrag]</div>
                             <input type='hidden' name='aantal' value='1'>
                             <button type='submit' class='button' name='voegtoe'>Voeg toe <i class='fas fa-plus'></i></button>
@@ -89,26 +93,28 @@ function pre_r($array){
                             <input type='hidden' name='bedrag' value='$row[bedrag]'>
                         </div></form>
                         ";
-                    }
                 }
             }
-            Product($conn)
-            ?>
-        </div>
+        }
+        Product($conn)
+        ?>
+    </div>
 
 </body>
 
 <script>
-$(function(){     
-  var d = new Date(),        
-      h = d.getHours(),
-      m = d.getMinutes();
-  if(h < 10) h = '0' + h; 
-  if(m < 10) m = '0' + m; 
-  $('input[type="time"][value="now"]').each(function(){ 
-    $(this).attr({'value': h + ':' + m});
-  });
-});
+    $(function() {
+        var d = new Date(),
+            h = d.getHours(),
+            m = d.getMinutes();
+        if (h < 10) h = '0' + h;
+        if (m < 10) m = '0' + m;
+        $('input[type="time"][value="now"]').each(function() {
+            $(this).attr({
+                'value': h + ':' + m
+            });
+        });
+    });
 </script>
 
 </html>
