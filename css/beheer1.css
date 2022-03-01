@@ -1,99 +1,123 @@
 * {
-   
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    background-color: #fbfaf6;
-    
+
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+
 }
 
 body {
-    font-family: 'Montserrat';
-  }
+  font-family: 'Montserrat';
+  background-color: #fbfaf6;
+}
 
 
- 
-  table {
-    position: absolute;
-    width:fit-content;
-    top:100px;
-    left: 150px;
-    box-shadow: 0px 3px 5px rgb(0 0 0 / 30%);
-  }
-  
 
-  .table th, .table td { 
-    text-align: center;
-    padding-right: 0.25rem; 
-    font-size:16px;
-  }
-  th {
-    background-color: yellow;
-  }
-  td.edit-buttons { text-align: right; }
+.tabel {
+  margin-top: 2%;
+  margin-left: 2%;
 
-  .tr:nth-child(even) {
-    background-color: #f3f3f3;
-  }
-  
+  width: 65%;
 
-  .table1 {
-    position: absolute;
-    width:200px;
-    top:100px;
-    right: 50px; 
-  }
-  
+  border-collapse: collapse;
+  box-shadow: 0px 3px 5px rgb(0 0 0 / 30%);
+}
+
+.tabel th {
+  padding-top: .5%;
+  padding-bottom: .5%;
+
+  background-color: rgb(255, 221, 0);
+}
+
+td:nth-child(even){
+  background-color: #f2f2f2;
+}
 
 
-  hr {
-    height:5px;
-    border-width:0;
-    background-color:#000000;
+.tabel th, .tabel td {
+  text-align: center;
+  padding-right: 0.25rem;
+
+  padding-top: .5%;
+  padding-bottom: .5%;
+
+  font-size: 13px;
+}
+
+td.edit-buttons {
+  text-align: right;
+}
+
+.popupbtn {
+  width: 70%;
+
+  border-radius: 10%;
+
+  border: none;
+  background-color: #F2F2F2
+}
+
+
+
+
+hr {
+  height: 5px;
+  border-width: 0;
+  background-color: #000000;
+}
+
+.td .edit-buttons {
+  text-align: right;
+}
+
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: rgb(255, 221, 0);
+
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+
+}
+
+
+
+
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  
-  .th {
-    background-color: yellow;
+  to {
+    opacity: 1;
   }
-  .td .edit-buttons { text-align: right; }
- 
-  
-  .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    user-select: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  /*popup */
-  .popup .popuptext {
-    visibility: hidden;
-   width: 300px;
-    background-color: yellow;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    right:100px;
-  
-    
+
+  to {
+    opacity: 1;
   }
-  
-  
-  
-  .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-  }
-  
-  
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-  }
+}
