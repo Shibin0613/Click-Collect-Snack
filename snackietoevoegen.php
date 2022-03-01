@@ -18,7 +18,7 @@ if(isset($_POST['loguit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/profiel.css">
+    <link rel="stylesheet" href="css/profiel1.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -33,8 +33,8 @@ if(isset($_POST['loguit'])){
         <div class="profiel-container">
             <h2 class="profiel">Snackie toevoegen</h2>
             <form method="POST" action="" enctype="multipart/form-data">
-                <input class="naam" type="text" name="productnaam" placeholder="Naam" required><br>
-                <input class="naam" type="text" name="bedrag" placeholder="Bedrag" required><br>
+                <input class="naam" type="text" name="productnaam" placeholder="Naam" maxlength="10" required><br>
+                <input class="naam" type="text" name="bedrag" maxlength="10" placeholder="Bedrag" required><br>
                 <input class="" type="file" id="file" name="image" accept="image/*" required>
                 <label for="file">
                     <i class="far fa-file-image"></i> &nbsp;
@@ -67,11 +67,11 @@ if($total!=0){
         <tr>
         <form action="" method="POST">
         <input type="hidden" name="id" value="<?php echo $result['id'];?>"> 
-        <td><input type="text" class="wijzigen" name="productnaam" value="<?php echo $result['productnaam'];?>"></td>
-        <td><input type="text" class="wijzigen" name="bedrag" value="<?php echo $result['bedrag']; ?>"></td>
-        <td><input type="submit" name="opslaan" class="submit" value="Opslaan"></td>
+        <td><input type="text" class="wijzigen" name="productnaam" maxlength="10" value="<?php echo $result['productnaam'];?>"></td>
+        <td><input type="text" class="wijzigen" name="bedrag" maxlength="10" value="<?php echo $result['bedrag']; ?>"></td>
+        <td><input type="submit" name="submit" class="opslaan" value="Opslaan"></td>
         </form>
-        <td><a href="delete.php?id=<?php echo $result['id']; ?>" onclick="return checkdelete()"><input type="submit" class="submit" value="Verwijderen"></a></td>
+        <td><a href="delete.php?id=<?php echo $result['id']; ?>" onclick="return checkdelete()"><input type="submit" class="opslaan" value="Verwijderen"></a></td>
         </tr>
     
         <?php
