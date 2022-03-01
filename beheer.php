@@ -28,7 +28,6 @@ if(isset($_POST['loguit'])){
   <th>Bestelnr</th>
   <th>Achternaam</th>
   <th>Telef</th>
-  <th>Email</th>
   <th>Ophaaltijd</th>
   <th>Bedrag</th>
   <th>Producten</th>
@@ -48,7 +47,6 @@ if($total!=0){
         <td>".$result['bestelnr']."</td>
         <td>".$result['achternaam']."</td>
         <td>".$result['telef']."</td>
-        <td>".$result['email']."</td>
         <td>".$result['ophaaltijd']."</td>
         <td>".$result['bedrag']."</td>
         <td>
@@ -59,14 +57,13 @@ if($total!=0){
 <span class='popuptext' id= myPopup".$result['bestelnr'].">
 <li>
 
- archternaam :".$result['achternaam']." 
- <br> <br>
-email :".$result['email']."
+Achternaam :".$result['achternaam']." 
 <br><br>
-telnr :".$result['telef']."
-<br>
-<br>
-".$result['bestelling']."
+Telnr: ".$result['telef']."<br> <br>
+Email: ".$result['email']."<br><br>
+Ophaaltijd: ".$result['ophaaltijd']."<br><br>
+Bestelling: ".$result['bestelling']."<br><br>
+Bedrag: ".$result['bedrag']."
 </li>
 ";}
  
