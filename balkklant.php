@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klant</title> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/balk1.css">
+    <link rel="stylesheet" href="css/balk.css">
 </head>
 <body>
     <div class="balk">
@@ -23,7 +23,7 @@
                 }
                 ?>
                 <form method='POST' action="" >
-                    <button type="submit" name="loguit">Loguit</button>
+                    <button type="submit" class="loguit" name="loguit">Loguit</button>
                 </form>
                 
         </nav>
