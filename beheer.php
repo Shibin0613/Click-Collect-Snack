@@ -30,8 +30,8 @@ if(isset($_POST['loguit'])){
   <th>Telef</th>
   <th>Email</th>
   <th>Ophaaltijd</th>
-  
   <th>Bedrag</th>
+  <th>Producten</th>
 </tr>
 
 <?php
@@ -52,11 +52,11 @@ if($total!=0){
         <td>".$result['ophaaltijd']."</td>
         <td>".$result['bedrag']."</td>
         <td>
-        <button id='myButton".$result['bestelnr']."' onclick=myFunction(".$result['bestelnr'].")>Tonen</button>
+        <button class='popupbtn' id='myButton".$result['bestelnr']."' onclick=myFunction(".$result['bestelnr'].")>Tonen</button>
         
 
-<div class=popup onclick=myFunction() >
-<span class=popuptext id= myPopup".$result['bestelnr'].">
+<div class='popup' onclick=myFunction() >
+<span class='popuptext' id= myPopup".$result['bestelnr'].">
 <li>
 
  archternaam :".$result['achternaam']." 
