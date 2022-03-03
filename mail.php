@@ -20,6 +20,9 @@ if(isset($_POST['bestel'])){
         <?php
     }else{
         echo "<script>alert('Sorry, bestellling is niet gelukt')</script>";
+        ?>
+        <META HTTP-EQUIV="Refresh" CONTENT="0; URL=bestelpagina.php">
+        <?php
     }
        
 }
